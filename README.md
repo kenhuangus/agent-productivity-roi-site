@@ -10,6 +10,12 @@ Presented by **黄连金 (Ken Huang), CISSP** — Adjunct Professor, University 
 
 ---
 
+## Abstract
+
+Deploying autonomous AI agents without rigorous engineering guardrails degrades enterprise return on investment (ROI) through runaway token churn, context window bloat, catastrophic tool blast radius, and excessive frontier model expenditure. This 12-slide interactive presentation establishes a quantitative engineering framework designed to maximize agentic productivity while slashing marginal inference costs by 70–85%. It operationalizes an engineered ROI equation across eight foundational architectural pillars: (1) tiered Levels of Autonomy (LoA 0–4) bounded by explicit tool allowlists and automated step-down triggers; (2) domain ontology-driven Intent-Based Access Control (IBAC) that compiles dynamic single-use capability tokens (`CapToken`) to neutralize Confused Deputy vulnerabilities; (3) a 3-tier defensive memory architecture (Ephemeral Turn, Quarantined Buffer with CRDTs and strict TTL, and Verified Long-Term Storage) eliminating context bloat and delivering 65% token savings; (4) OpenTelemetry GenAI semantic trajectory tracing with real-time cosine drift scoring and early loop interception; (5) deterministic PreToolUse/PostToolUse runtime steering gateways; (6) empirical ROI benchmarking tracking Task Completion Rate (TCR ≥90%), Cost Per Successful Task (CPST), and Token Efficiency Ratio (TER); (7) a 3-tier cascaded mixed-model routing architecture (Local/Edge $0, Hosted Open-Weights $0.25–$1.00/M, Frontier Models $3–$15/M) reducing overall model expenditure by 75–85%; and (8) prompt caching economics leveraging Claude API breakpoints and Claude Code's 5-minute sliding TTL to secure 90% input token discounts and 80% faster response latencies.
+
+---
+
 ## 12 Slides Overview
 
 1. **Title Cover / Hero**: Architectural overview of Agentic AI Productivity & Enterprise ROI Framework.
