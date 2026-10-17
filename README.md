@@ -12,7 +12,7 @@ Presented by **黄连金 (Ken Huang), CISSP** — Adjunct Professor, University 
 
 ## Abstract
 
-This 12-slide presentation provides an engineering framework to maximize autonomous agent productivity while reducing unit token costs by 70–85%. It covers eight core technical controls: (1) 5-tier autonomy bounds (LoA 0–4) with tool allowlists; (2) domain ontology Intent-Based Access Control (IBAC) using single-use capability tokens to prevent Confused Deputy attacks; (3) a 3-tier memory model reducing context bloat by 65%; (4) OpenTelemetry trajectory tracing with cosine drift scoring to intercept execution loops; (5) deterministic PreToolUse/PostToolUse runtime steering; (6) empirical ROI benchmarks (TCR, CPST, TER, HER); (7) cascaded model routing (local edge, hosted open weights, and frontier models); and (8) Claude prompt caching with 5-minute sliding TTL mechanics.
+This presentation delivers an enterprise framework to maximize AI workforce productivity and improve return on investment (ROI) across agentic deployments. It details actionable strategies to lower operating costs by 70–85% through structured autonomy tiers, intent-driven access controls, and efficient context management. Enterprise leaders and engineering teams learn how to eliminate wasteful model spend by routing workloads across tiered models, reusing cached instructions, and intercepting unproductive execution loops before they drain budgets. The presentation defines executive metrics—including task completion rates, cost per successful task, and human effort reduction—to help organizations benchmark agent performance and scale autonomous operations profitably.
 
 ---
 
