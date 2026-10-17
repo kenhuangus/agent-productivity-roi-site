@@ -16,6 +16,12 @@ This 12-slide presentation provides an engineering framework to maximize autonom
 
 ---
 
+## About the Author: Ken Huang, CISSP
+
+**黄连金 (Ken Huang), CISSP** is an [Adjunct Professor at the University of San Francisco (USF)](https://www.usfca.edu/faculty/ken-huang) and CEO of [DistributedApps.ai](https://distributedapps.ai/). He serves as Fellow and Co-Chair of Cloud Security Alliance (CSA) AI Safety Working Groups—co-authoring the [MAESTRO](https://cloudsecurityalliance.org/blog/2025/02/06/agentic-ai-threat-modeling-framework-maestro) Agentic AI Threat Modeling Framework—and leads the OWASP AI Verification and Security Standard (AIVSS) project. An author of books on AI engineering and security with Springer, Cambridge, Wiley, and Packt (including *Harness Engineering* [Packt, 2026] and *Agentic AI: Theories and Practices* [Springer, 2025]), his research focuses on agent autonomy governance, context window hygiene, cascaded model routing, prompt cache optimization, and enterprise ROI metrics.
+
+---
+
 ## 12 Slides Overview
 
 1. **Title Cover / Hero**: Architectural overview of Agentic AI Productivity & Enterprise ROI Framework.
