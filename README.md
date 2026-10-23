@@ -2,7 +2,7 @@
 
 🌐 **Live GitHub Pages Website:** [https://kenhuangus.github.io/agent-productivity-roi-site/](https://kenhuangus.github.io/agent-productivity-roi-site/)
 
-A publication-grade, self-contained, GitHub Pages-ready **12-slide interactive presentation deck** on Agentic AI Productivity, Unit Economics, Levels of Autonomy, Domain Ontology & Intent-Based Access Control (IBAC), Context Window Hygiene, Trajectory Observability, Active Runtime Steering, Mixed-Model Cascaded Routing, and Claude Prompt Cache TTL Optimization.
+A publication-grade, self-contained, GitHub Pages-ready **15-slide interactive presentation** on Agentic AI productivity and enterprise ROI: four IT investment buckets, risk governance (NIST AI RMF, EU AI Act, MAESTRO, AIVSS, CSA Agent Red Team, AICM), and seven tactical controls. Every content slide is capped at **three points**.
 
 Modeled on the architecture and visual design system of [MAESTRO](https://kenhuangus.github.io/maestro-site/).
 
@@ -12,7 +12,7 @@ Presented by **黄连金 (Ken Huang), CISSP** — Adjunct Professor, University 
 
 ## Abstract
 
-This presentation delivers an enterprise framework to maximize AI workforce productivity and improve return on investment (ROI) across agentic deployments. It details actionable strategies to lower operating costs by 70–85% through structured autonomy tiers, intent-driven access controls, and efficient context management. Enterprise leaders and engineering teams learn how to eliminate wasteful model spend by routing workloads across tiered models, reusing cached instructions, and intercepting unproductive execution loops before they drain budgets. The presentation defines executive metrics—including task completion rates, cost per successful task, and human effort reduction—to help organizations benchmark agent performance and scale autonomous operations profitably.
+This presentation delivers an enterprise framework to maximize AI workforce productivity and improve return on investment (ROI) across agentic deployments. Part 1 classifies IT systems into four investment buckets so capital follows productivity and value acquisition. Part 2 anchors risk management in NIST AI RMF and the EU AI Act, then operationalizes MAESTRO threat modeling, AIVSS scoring, CSA Agent AI red teaming, and AICM management controls. Part 3 applies seven tactical controls—autonomy bounds, IBAC, memory hygiene, observability, runtime steering, ROI evaluation, and model economics (routing + caching)—to raise productivity while protecting unit economics.
 
 ---
 
@@ -22,32 +22,35 @@ This presentation delivers an enterprise framework to maximize AI workforce prod
 
 ---
 
-## 12 Slides Overview
+## 15 Slides Overview
 
-1. **Title Cover / Hero**: Architectural overview of Agentic AI Productivity & Enterprise ROI Framework.
-2. **About the Instructor & Academic Foundation**: Credentials, university posts, and 7 published AI & Security books (Springer, Cambridge, Wiley, Packt).
-3. **The Enterprise Agentic ROI Equation & Hidden Tax**: Why naive agents destroy ROI (runaway token churn, context bloat, confused deputy attacks, monolithic model tax) vs. the engineered ROI multipliers.
-4. **Pillar 1: Agent Autonomy & Bounded Tool Governance**: 6-tier operational taxonomy (LoA 0 to LoA 4), least-privilege tool allowlists, spend velocity caps, and automated step-down triggers.
-5. **Pillar 2: Domain Ontology & Intent-Based Access Control (IBAC)**: Mitigating Confused Deputy vulnerabilities and shrinking blast radius through ontology grounding and ephemeral single-use capability tokens (`CapToken`).
-6. **Pillar 3: Context Hygiene & Hierarchical Memory for Token ROI**: The quadratic cost penalty of context bloat, and the 3-tier memory model (Ephemeral Turn, Quarantined Buffer, Verified Long-Term) delivering 65% token savings.
-7. **Pillar 4: Behavioral Observability & Trajectory Monitoring**: OpenTelemetry (OTel) GenAI semantic DAG tracing, real-time cosine semantic drift scoring, cognitive oscillation interception, and lateral movement detection.
-8. **Pillar 5: Active Runtime Steering & Control Plane**: Deterministic out-of-band PreToolUse/PostToolUse interceptors, dynamic argument mutation, and 4 decision primitives (`APPROVE`, `STEER`, `SANDBOX`, `KILL`).
-9. **Pillar 6: Rigorous Evaluation & Enterprise ROI Benchmarking**: The 4 enterprise ROI metrics (Task Completion Rate [TCR], Cost Per Successful Task [CPST], Token Efficiency Ratio [TER], Human Effort Reduction [HER]) and anti-regression pipelines.
-10. **Pillar 7: Mixed-Model Cascaded Routing Architecture**: 3-tier hierarchy (Tier 1 Local/Edge on Ollama/vLLM [$0], Tier 2 Hosted Open-Weights [$0.25–$1/M], Tier 3 Frontier Models [$3–$15/M]) yielding 75–85% inference cost reductions.
-11. **Pillar 8: Prompt Cache Optimization & Claude Code Cache TTL**: Claude API 90% input token discount, sub-second TTFT, strategic cache breakpoint layout, and Claude Code 5-minute sliding TTL session economics.
-12. **Executive Synthesis, ROI Implementation Blueprint & Open Q/A**: Executive synthesis of the 8 ROI accelerators, 6-week adoption roadmap, strategic discussion prompts, and author contact.
+1. **Title Cover / Hero** — Productivity, business value, and defensible ROI (three-part frame).
+2. **About the Instructor** — Three credential lines + book gallery.
+3. **Agenda** — Part 1 Value · Part 2 Risk · Part 3 Seven controls.
+4. **Part 1: Four IT System Buckets** — (1) works fine without Agentic AI · (2) leverage agents for value/productivity · (3) re-platform as Agentic · (4) build Agentic AI–native.
+5. **Part 2: Policy** — NIST AI RMF & EU AI Act as ROI-protecting gates.
+6. **Part 2: Operational Stack** — MAESTRO, AIVSS, CSA Agent Red Team + AICM.
+7. **Part 3 Intro** — Seven tactical controls overview.
+8. **Control 1** — Autonomy bounds & tool governance.
+9. **Control 2** — Intent-Based Access Control (IBAC).
+10. **Control 3** — Memory hygiene for token ROI.
+11. **Control 4** — Trajectory observability & drift detection.
+12. **Control 5** — Active runtime steering.
+13. **Control 6** — Evaluation & ROI benchmarks (TCR, CPST, HER).
+14. **Control 7** — Model economics: cascaded routing + prompt caching.
+15. **Executive Synthesis** — Three compounding moves + discussion prompts.
 
 ---
 
 ## Interactive Navigation Controls
 
-- **Next Slide:** `→` (Arrow Right) / `Space` / `PageDown` / Click `Next ›`
-- **Previous Slide:** `←` (Arrow Left) / `PageUp` / Click `‹ Prev`
+- **Next Slide:** `→` / `Space` / `PageDown` / Click `Next ›`
+- **Previous Slide:** `←` / `PageUp` / Click `‹ Prev`
 - **Jump to Start / End:** `Home` / `End`
 - **Fullscreen Mode:** `F` or click `Full Screen`
-- **Language Switcher:** Click `EN` or `中文` in the header bar
-- **Hash Deep Linking:** Link directly to any slide via URL hash (e.g. `#1` to `#12`)
-- **Swipe / Wheel:** Touch swipe on mobile or debounced scroll wheel on desktop
+- **Language Switcher:** `EN` / `中文`
+- **Hash Deep Linking:** `#1` … `#15`
+- **Swipe / Wheel:** Touch swipe or debounced scroll wheel
 
 ---
 

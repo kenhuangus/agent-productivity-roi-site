@@ -127,41 +127,104 @@
   }
 
   // -------------------------------------------------------------
-  // Slide 3 Diagram: The Enterprise Agentic ROI Equation
+  // Agenda: Three Parts
   // -------------------------------------------------------------
-  function drawROIEquation(host) {
+  function drawAgendaThreeParts(host) {
     const s = scene(host, 660, 360);
     const zh = isZh();
+    const parts = [
+      { t: zh ? "Part 1\n业务价值" : "Part 1\nBusiness Value", d: zh ? "四类 IT 系统投资桶\n生产力与价值获取" : "4 IT system buckets\nProductivity & value", c: COL.blue },
+      { t: zh ? "Part 2\n风险管理" : "Part 2\nRisk Management", d: zh ? "NIST · EU AI Act\nMAESTRO · AIVSS · CSA" : "NIST · EU AI Act\nMAESTRO · AIVSS · CSA", c: COL.orange },
+      { t: zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", d: zh ? "自主 · 意图 · 记忆\n观测 · 引导 · 评估 · 经济" : "Autonomy · IBAC · Memory\nObs · Steer · Eval · Econ", c: COL.green }
+    ];
+    parts.forEach((p, i) => {
+      const x = 25 + i * 215;
+      rect(s, x, 40, 200, 280, { fill: "#ffffff", fillStyle: "solid", stroke: p.c, strokeWidth: 2.2 });
+      txt(s, x + 100, 90, p.t, { anchor: "middle", weight: 800, col: p.c, size: 16 });
+      txt(s, x + 100, 180, p.d, { anchor: "middle", weight: 600, col: COL.ink, size: 13 });
+      txt(s, x + 100, 280, zh ? `第 ${i + 1} 步` : `Step ${i + 1}`, { anchor: "middle", weight: 700, col: p.c, size: 12 });
+      if (i < 2) arrow(s, x + 205, 180, x + 210, 180, { stroke: COL.ink, strokeWidth: 2 });
+    });
+  }
 
-    // Left Column: Value Generation Accelerators (Solid Blue Card)
-    rect(s, 15, 20, 200, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
-    txt(s, 115, 45, zh ? "🚀 业务产出乘数" : "🚀 Value Velocity Multiplier", { anchor: "middle", weight: 700, col: COL.blue, size: 12.5 });
-    chip(s, 25, 65, 180, 48, zh ? "研发速度提升 3x–10x\n(消除人工等待瓶颈)" : "3x–10x Dev Velocity\n(Zero manual bottlenecks)", COL.blue, { size: 11.5, fill: "#ffffff" });
-    chip(s, 25, 122, 180, 48, zh ? "长程复杂目标交付\n(端到端自动化解决)" : "Long-Horizon Delivery\n(Multi-turn autonomous goals)", COL.blue, { size: 11.5, fill: "#ffffff" });
-    chip(s, 25, 180, 180, 48, zh ? "测试与文档全自动\n(消除低阶繁复重活)" : "Automated Test & Docs\n(Zero toil engineering)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    chip(s, 25, 238, 180, 48, zh ? "7x24 小时并发执行\n(规模化机器对机器)" : "Continuous 24/7 Run\n(Scalable M2M operations)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    txt(s, 115, 312, zh ? "+ 产出价值量倍增" : "+ Radical Value Expansion", { anchor: "middle", size: 11.5, col: COL.blue, weight: 700 });
+  // -------------------------------------------------------------
+  // Part 1: Four IT System Buckets
+  // -------------------------------------------------------------
+  function drawFourBuckets(host) {
+    const s = scene(host, 660, 360);
+    const zh = isZh();
+    const buckets = [
+      { n: "1", t: zh ? "无需智能体" : "No Agentic AI", d: zh ? "系统运行良好\n保持现状" : "Works fine today\nLeave as-is", c: COL.slate },
+      { n: "2", t: zh ? "叠加智能体" : "Leverage Agents", d: zh ? "提升价值获取\n与生产力" : "Better value &\nproductivity", c: COL.blue },
+      { n: "3", t: zh ? "重塑为智能体" : "Re-platform", d: zh ? "遗留阻塞 ROI\n需平台重建" : "Legacy blocks ROI\nRebuild agentic", c: COL.orange },
+      { n: "4", t: zh ? "原生新建" : "AI-Native New", d: zh ? "从零构建\nAgentic Native" : "Greenfield built\nas agent-native", c: COL.green }
+    ];
+    buckets.forEach((b, i) => {
+      const y = 18 + i * 84;
+      rect(s, 20, y, 620, 74, { fill: "#ffffff", fillStyle: "solid", stroke: b.c, strokeWidth: 2 });
+      chip(s, 35, y + 14, 52, 46, b.n, b.c, { size: 18, weight: 800, fill: "#ffffff" });
+      txt(s, 110, y + 28, b.t, { weight: 800, col: b.c, size: 15 });
+      txt(s, 110, y + 52, b.d.replace("\n", " · "), { weight: 500, col: COL.ink, size: 12 });
+    });
+  }
 
-    // Center Column: The "Hidden Tax" of Naive Agents (Solid Red Card)
-    rect(s, 230, 20, 200, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.red, strokeWidth: 2 });
-    txt(s, 330, 45, zh ? "⚠️ 原生智能体隐性成本税" : "⚠️ Naive Agent Cost Tax", { anchor: "middle", weight: 700, col: COL.red, size: 12.5 });
-    chip(s, 240, 65, 180, 48, zh ? "死循环与振荡重试\n(单任务吞噬数万 Token)" : "Runaway Retry Loops\n(Tens of thousands wasted)", COL.red, { size: 11.5, fill: "#ffffff" });
-    chip(s, 240, 122, 180, 48, zh ? "上下文无度膨胀\n(注意力稀释且单价飙升)" : "Context Window Bloat\n(Attention drop & high bills)", COL.red, { size: 11.5, fill: "#ffffff" });
-    chip(s, 240, 180, 180, 48, zh ? "混淆代理越权风险\n(高破坏半径与回滚损失)" : "Confused Deputy Risk\n(Catastrophic blast radius)", COL.orange, { size: 11.5, fill: "#ffffff" });
-    chip(s, 240, 238, 180, 48, zh ? "单一大模型税\n(简单任务支付 $15/M)" : "Monolithic Model Tax\n(Paying $15/M for simple regex)", COL.orange, { size: 11.5, fill: "#ffffff" });
-    txt(s, 330, 312, zh ? "- 毁灭企业 ROI" : "- Destroys Net ROI", { anchor: "middle", size: 11.5, col: COL.red, weight: 700 });
+  // -------------------------------------------------------------
+  // Part 2a: Policy — NIST + EU AI Act
+  // -------------------------------------------------------------
+  function drawRiskPolicy(host) {
+    const s = scene(host, 660, 360);
+    const zh = isZh();
+    rect(s, 20, 30, 300, 300, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
+    txt(s, 170, 65, zh ? "NIST AI RMF" : "NIST AI RMF", { anchor: "middle", weight: 800, col: COL.blue, size: 16 });
+    ["Govern", "Map", "Measure", "Manage"].forEach((lab, i) => {
+      chip(s, 45, 95 + i * 50, 250, 40, lab, COL.blue, { size: 13, fill: "#ffffff" });
+    });
+    rect(s, 340, 30, 300, 300, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
+    txt(s, 490, 65, zh ? "EU AI Act" : "EU AI Act", { anchor: "middle", weight: 800, col: COL.orange, size: 16 });
+    const eu = zh
+      ? ["用例风险分级", "高风险强制控制", "上线前文档化"]
+      : ["Risk-tier use-cases", "High-risk controls", "Docs before scale"];
+    eu.forEach((lab, i) => {
+      chip(s, 365, 110 + i * 55, 250, 44, lab, COL.orange, { size: 13, fill: "#ffffff" });
+    });
+  }
 
-    // Connecting Arrow
-    arrow(s, 435, 175, 450, 175, { stroke: COL.ink, strokeWidth: 2 });
+  // -------------------------------------------------------------
+  // Part 2b: MAESTRO / AIVSS / CSA
+  // -------------------------------------------------------------
+  function drawRiskToolkit(host) {
+    const s = scene(host, 660, 360);
+    const zh = isZh();
+    const items = [
+      { t: "MAESTRO", d: zh ? "智能体威胁建模" : "Agent threat modeling", c: COL.grape },
+      { t: "AIVSS", d: zh ? "漏洞严重度评分" : "Vulnerability scoring", c: COL.blue },
+      { t: zh ? "CSA 红队 + AICM" : "CSA Red Team + AICM", d: zh ? "对抗测试与管控矩阵" : "Adversarial test + controls", c: COL.teal }
+    ];
+    items.forEach((it, i) => {
+      const x = 25 + i * 215;
+      rect(s, x, 50, 200, 260, { fill: "#ffffff", fillStyle: "solid", stroke: it.c, strokeWidth: 2.2 });
+      txt(s, x + 100, 120, it.t, { anchor: "middle", weight: 800, col: it.c, size: 15 });
+      txt(s, x + 100, 200, it.d, { anchor: "middle", weight: 600, col: COL.ink, size: 13 });
+    });
+  }
 
-    // Right Column: Engineered Harness ROI (Solid Green Card)
-    rect(s, 450, 20, 195, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.green, strokeWidth: 2.2 });
-    txt(s, 547, 45, zh ? "🎯 工程化高 ROI 结果" : "🎯 Engineered Net ROI", { anchor: "middle", weight: 700, col: COL.green, size: 12.5 });
-    chip(s, 460, 65, 175, 52, zh ? "75%–85% 推理降本\n(Prompt缓存+混合模型)" : "75%–85% Cost Drop\n(Prompt cache + routing)", COL.green, { size: 11.5, fill: "#ffffff" });
-    chip(s, 460, 128, 175, 52, zh ? "65% Token 消耗缩减\n(3层记忆卫生架构)" : "65% Token Savings\n(3-Tier memory model)", COL.green, { size: 11.5, fill: "#ffffff" });
-    chip(s, 460, 191, 175, 52, zh ? "0 灾难性越权事故\n(本体意图+单次CapToken)" : "0 Blast Incidents\n(Ontology & CapTokens)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    chip(s, 460, 254, 175, 52, zh ? ">90% 任务交付率\n(确定性运行时控制面)" : ">90% Completion Rate\n(Active runtime steering)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    txt(s, 547, 320, zh ? "= 真实健康的资本回报" : "= Sustained Net ROI", { anchor: "middle", size: 11.5, col: COL.green, weight: 700 });
+  // -------------------------------------------------------------
+  // Part 3 intro: Seven controls
+  // -------------------------------------------------------------
+  function drawSevenControls(host) {
+    const s = scene(host, 660, 360);
+    const zh = isZh();
+    const ctrls = zh
+      ? ["1 自主边界", "2 意图 IBAC", "3 记忆卫生", "4 轨迹观测", "5 运行引导", "6 ROI 评估", "7 模型经济"]
+      : ["1 Autonomy", "2 IBAC", "3 Memory", "4 Observe", "5 Steer", "6 Evaluate", "7 Model Econ"];
+    const colors = [COL.blue, COL.grape, COL.teal, COL.orange, COL.green, COL.yellow, COL.purple];
+    ctrls.forEach((lab, i) => {
+      const col = i < 4 ? 0 : 1;
+      const row = i < 4 ? i : i - 4;
+      const x = 30 + col * 310;
+      const y = 30 + row * 80;
+      chip(s, x, y, 290, 60, lab, colors[i], { size: 14, fill: "#ffffff", weight: 700 });
+    });
   }
 
   // -------------------------------------------------------------
@@ -499,48 +562,30 @@
     const s = scene(host, 660, 360);
     const zh = isZh();
 
-    // Central Engine Hub
-    rect(s, 230, 115, 200, 85, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2.5 });
-    txt(s, 330, 148, zh ? "🛡️ 企业智能体 ROI 引擎" : "🛡️ ENTERPRISE ROI ENGINE", { anchor: "middle", weight: 700, col: COL.blue, size: 13 });
-    txt(s, 330, 172, zh ? "八大支柱工程化闭环" : "8-Pillar Unified Harness", { anchor: "middle", size: 11, col: COL.slate });
+    rect(s, 180, 130, 300, 90, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2.5 });
+    txt(s, 330, 165, zh ? "🛡️ 智能体生产力 ROI" : "🛡️ AGENTIC PRODUCTIVITY ROI", { anchor: "middle", weight: 800, col: COL.blue, size: 14 });
+    txt(s, 330, 195, zh ? "价值 · 风险 · 七项战术控制" : "Value · Risk · 7 Tactical Controls", { anchor: "middle", size: 12, col: COL.slate });
 
-    // Surrounding 8 Pillar Nodes
-    // 1. Top Left: Autonomy
-    chip(s, 20, 20, 185, 48, zh ? "1. 自主权分级 (LoA)" : "1. Autonomy LoA Bounds", COL.blue, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 195, 68, 235, 115, { stroke: COL.blue });
+    chip(s, 40, 35, 180, 55, zh ? "Part 1\n四类投资桶" : "Part 1\n4 Investment Buckets", COL.blue, { size: 12.5, fill: "#ffffff" });
+    arrow(s, 220, 62, 250, 140, { stroke: COL.blue });
 
-    // 2. Top Center: IBAC
-    chip(s, 235, 20, 190, 48, zh ? "2. 领域本体与 IBAC" : "2. Domain IBAC & CapToken", COL.grape, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 330, 68, 330, 115, { stroke: COL.grape });
+    chip(s, 240, 35, 180, 55, zh ? "Part 2\n风险治理栈" : "Part 2\nRisk Governance", COL.orange, { size: 12.5, fill: "#ffffff" });
+    arrow(s, 330, 90, 330, 130, { stroke: COL.orange });
 
-    // 3. Top Right: Memory
-    chip(s, 455, 20, 185, 48, zh ? "3. 3层记忆卫生架构" : "3. 3-Tier Memory Hygiene", COL.teal, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 465, 68, 425, 115, { stroke: COL.teal });
+    chip(s, 440, 35, 180, 55, zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", COL.green, { size: 12.5, fill: "#ffffff" });
+    arrow(s, 440, 62, 410, 140, { stroke: COL.green });
 
-    // 4. Middle Left: Observability
-    chip(s, 20, 135, 185, 48, zh ? "4. OTel 轨迹与漂移监控" : "4. OTel Trace & Drift", COL.orange, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 205, 157, 230, 157, { stroke: COL.orange });
+    const bottom = zh
+      ? ["自主 / IBAC / 记忆", "观测 / 引导", "评估 / 模型经济"]
+      : ["Autonomy / IBAC / Memory", "Observe / Steer", "Eval / Model Econ"];
+    const bcols = [COL.grape, COL.teal, COL.purple];
+    bottom.forEach((lab, i) => {
+      chip(s, 40 + i * 210, 250, 190, 48, lab, bcols[i], { size: 12, fill: "#ffffff" });
+    });
 
-    // 5. Middle Right: Steering
-    chip(s, 455, 135, 185, 48, zh ? "5. 运行时控制网关" : "5. Runtime Steering Plane", COL.red, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 455, 157, 430, 157, { stroke: COL.red });
-
-    // 6. Bottom Left: Benchmarks
-    chip(s, 20, 250, 185, 48, zh ? "6. 严格 ROI 效能基准" : "6. ROI Benchmark Metrics", COL.green, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 195, 250, 235, 200, { stroke: COL.green });
-
-    // 7. Bottom Center: Mixed-Models
-    chip(s, 235, 250, 190, 48, zh ? "7. 混合模型级联路由" : "7. Mixed-Model Router", COL.purple, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 330, 250, 330, 200, { stroke: COL.purple });
-
-    // 8. Bottom Right: Prompt Cache
-    chip(s, 455, 250, 185, 48, zh ? "8. Prompt 缓存 (5m TTL)" : "8. Prompt Cache (5m TTL)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    arrow(s, 465, 250, 425, 200, { stroke: COL.teal });
-
-    // Bottom Summary Banner
     rect(s, 20, 315, 620, 34, { fill: "#f0fdf4", fillStyle: "solid", stroke: COL.green, strokeWidth: 1.8 });
-    txt(s, 330, 332, zh ? "✓ 生产力提升 3x–10x · 边际推理成本削减 70%–85% · 零灾难性越权爆炸半径" : "✓ 3x–10x Velocity · 70%–85% Marginal Cost Reduction · Zero Blast Radius", {
-      anchor: "middle", size: 11.5, col: COL.green, weight: 700
+    txt(s, 330, 332, zh ? "✓ 正确投资 · 可控风险 · 可证明单位经济效益" : "✓ Right bets · Managed risk · Provable unit economics", {
+      anchor: "middle", size: 12, col: COL.green, weight: 700
     });
   }
 
@@ -548,7 +593,11 @@
   // Router for slide diagram rendering
   // -------------------------------------------------------------
   const RENDERERS = {
-    "roi-equation": drawROIEquation,
+    "agenda-three-parts": drawAgendaThreeParts,
+    "four-buckets": drawFourBuckets,
+    "risk-policy": drawRiskPolicy,
+    "risk-toolkit": drawRiskToolkit,
+    "seven-controls": drawSevenControls,
     "autonomy-governance": drawAutonomyGovernance,
     "domain-ibac": drawIBACArchitecture,
     "context-memory": drawContextMemoryHygiene,
@@ -558,16 +607,19 @@
     "mixed-model-routing": drawMixedModelRouting,
     "prompt-cache-ttl": drawPromptCacheTTL,
     "summary-roi": drawROISynthesis,
-    3: drawROIEquation,
-    4: drawAutonomyGovernance,
-    5: drawIBACArchitecture,
-    6: drawContextMemoryHygiene,
-    7: drawObservabilityTrace,
-    8: drawRuntimeSteering,
-    9: drawBenchmarkMatrix,
-    10: drawMixedModelRouting,
-    11: drawPromptCacheTTL,
-    12: drawROISynthesis
+    3: drawAgendaThreeParts,
+    4: drawFourBuckets,
+    5: drawRiskPolicy,
+    6: drawRiskToolkit,
+    7: drawSevenControls,
+    8: drawAutonomyGovernance,
+    9: drawIBACArchitecture,
+    10: drawContextMemoryHygiene,
+    11: drawObservabilityTrace,
+    12: drawRuntimeSteering,
+    13: drawBenchmarkMatrix,
+    14: drawMixedModelRouting,
+    15: drawROISynthesis
   };
 
   window.renderAllDiagrams = function () {
