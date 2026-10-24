@@ -35,8 +35,8 @@
   --shadow: 0 4px 20px rgba(11, 14, 20, 0.08);
   --shadow-lg: 0 10px 30px rgba(11, 14, 20, 0.14);
   --hand: 'Kalam', cursive;
-  --bar-h: 56px;
-  --ctrl-h: 64px;
+  --bar-h: 48px;
+  --ctrl-h: 52px;
 }
 
 * { box-sizing: border-box; }
@@ -72,7 +72,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   gap: 1.2rem;
-  padding: 0 3vw;
+  padding: 0 1.2vw;
   background: rgba(11, 14, 20, 0.96);
   border-bottom: 1px solid var(--line-dark);
   color: #eceef2;
@@ -195,9 +195,9 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2vh 3.5vw;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0.7vh 1.1vw;
   background: var(--paper);
   opacity: 0;
   visibility: hidden;
@@ -220,15 +220,18 @@ a { color: inherit; text-decoration: none; }
 
 .slide__in {
   width: 100%;
-  max-width: 1380px;
+  max-width: none;
+  height: 100%;
   max-height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  min-height: 0;
 }
 .slide__in.center {
   align-items: center;
   text-align: center;
+  justify-content: center;
 }
 
 /* ---------- Typography & Elements ---------- */
@@ -299,7 +302,7 @@ a { color: inherit; text-decoration: none; }
   border: 1.8px dashed rgba(255, 180, 84, 0.55);
   padding: 0.28rem 1.1rem;
   border-radius: 999px;
-  margin-bottom: 1.4vh;
+  margin-bottom: 0.8vh;
   transform: rotate(-1deg);
 }
 .hero__title {
@@ -351,9 +354,11 @@ a { color: inherit; text-decoration: none; }
 .instructor-slide-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(0, 1.25fr);
-  gap: 1.25rem;
+  gap: 0.8rem;
+  flex: 1 1 auto;
   height: 100%;
-  align-items: start;
+  min-height: 0;
+  align-items: stretch;
 }
 @media (max-width: 1040px) {
   .instructor-slide-grid {
@@ -598,8 +603,9 @@ a { color: inherit; text-decoration: none; }
 .two-col {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 2.0vw;
-  margin-top: 1.2vh;
+  gap: 1.0vw;
+  margin-top: 0.6vh;
+  flex: 1 1 auto;
   min-height: 0;
   align-items: stretch;
 }
@@ -623,11 +629,13 @@ a { color: inherit; text-decoration: none; }
 .card {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.4vh 1.3vw;
+  border-radius: 12px;
+  padding: 1.0vh 1.0vw;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  height: 100%;
 }
 .card--dark {
   background: #141a26;
@@ -729,14 +737,15 @@ a { color: inherit; text-decoration: none; }
 .draw-wrap {
   background: #ffffff;
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 1.0vh 1.0vw;
+  border-radius: 12px;
+  padding: 0.5vh 0.5vw;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 0;
+  height: 100%;
 }
 .draw-wrap--dark {
   background: #131926;
@@ -752,7 +761,7 @@ a { color: inherit; text-decoration: none; }
 }
 .draw svg {
   max-width: 100%;
-  max-height: 52vh;
+  max-height: min(68vh, 100%);
   width: auto;
   height: auto;
   display: block;
@@ -816,7 +825,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  padding: 0 4vw;
+  padding: 0 1.5vw;
   background: rgba(11, 14, 20, 0.96);
   border-top: 1px solid var(--line-dark);
   backdrop-filter: blur(12px);
@@ -902,7 +911,7 @@ html[lang="zh-CN"] body, .is-zh {
 @media (max-width: 900px) {
   .about, .two-col, .two-col--equal { grid-template-columns: 1fr; gap: 1.2vh; }
   .three-col, .four-col { grid-template-columns: 1fr 1fr; }
-  .draw svg { max-height: 38vh; }
+  .draw svg { max-height: 48vh; }
   .bar__title { display: none; }
 }
 @media (max-width: 600px) {
