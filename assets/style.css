@@ -775,11 +775,35 @@ a { color: inherit; text-decoration: none; }
   background: #fff5f5;
   border: 1px solid #ffc9c9;
   border-radius: 8px;
-  padding: 0.55vh 0.75rem;
+  padding: 1.2vh 1.1rem;
   margin-bottom: 0.65vh;
-  font-size: clamp(1.15rem, 2.4vh, 1.35rem);
+  font-size: clamp(1.05rem, 2.1vh, 1.25rem);
   color: #b02525;
-  line-height: 1.35;
+  line-height: 1.45;
+  overflow: visible;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.evidence-box .evidence-text {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: break-word;
+}
+.evidence-qs {
+  list-style: none;
+  margin: 0.35em 0 0;
+  padding: 0;
+}
+.evidence-qs li {
+  margin: 0.2em 0;
+  padding-left: 0.9em;
+  position: relative;
+}
+.evidence-qs li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
 }
 .evidence-box--blue {
   background: #eef7ff;

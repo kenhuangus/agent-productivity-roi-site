@@ -159,7 +159,7 @@
   // Part 1: Four IT System Buckets
   // -------------------------------------------------------------
   function drawFourBuckets(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
     const buckets = [
       { n: "1", t: zh ? "无需智能体" : "Leave alone", d: zh ? "运行良好" : "Works fine", c: COL.slate },
@@ -168,11 +168,11 @@
       { n: "4", t: zh ? "原生新建" : "Agent-native", d: zh ? "绿地新建" : "Greenfield native", c: COL.green }
     ];
     buckets.forEach((b, i) => {
-      const y = 18 + i * 84;
-      rect(s, 20, y, 620, 74, { fill: "#ffffff", fillStyle: "solid", stroke: b.c, strokeWidth: 2 });
-      chip(s, 35, y + 14, 52, 46, b.n, b.c, { size: 16, weight: 800, fill: "#ffffff" });
-      txt(s, 110, y + 30, b.t, { weight: 800, col: b.c, size: 14 });
-      txt(s, 110, y + 54, b.d, { weight: 500, col: COL.ink, size: 12 });
+      const y = 24 + i * 102;
+      rect(s, 40, y, 880, 88, { fill: "#ffffff", fillStyle: "solid", stroke: b.c, strokeWidth: 2 });
+      chip(s, 60, y + 18, 64, 52, b.n, b.c, { size: 18, weight: 800, fill: "#ffffff" });
+      txt(s, 150, y + 36, b.t, { weight: 800, col: b.c, size: 15 });
+      txt(s, 150, y + 64, b.d, { weight: 500, col: COL.ink, size: 13 });
     });
   }
 
@@ -180,7 +180,7 @@
   // Part 2: NIST AI RMF ← CSA / AIVSS mapping
   // -------------------------------------------------------------
   function drawRiskRmfMapping(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
     const rows = [
       {
@@ -204,14 +204,14 @@
         c: COL.green
       }
     ];
-    txt(s, 330, 28, zh ? "NIST AI RMF ← CSA / AIVSS" : "NIST AI RMF ← CSA / AIVSS", {
-      anchor: "middle", weight: 800, col: COL.ink, size: 13
+    txt(s, 480, 32, zh ? "NIST AI RMF ← CSA / AIVSS" : "NIST AI RMF ← CSA / AIVSS", {
+      anchor: "middle", weight: 800, col: COL.ink, size: 14
     });
     rows.forEach((r, i) => {
-      const y = 48 + i * 76;
-      chip(s, 20, y, 150, 60, r.fn, r.c, { size: 14, weight: 800, fill: "#ffffff" });
-      arrow(s, 180, y + 30, 230, y + 30, { stroke: COL.ink, strokeWidth: 2 });
-      chip(s, 240, y, 400, 60, r.art, r.c, { size: 12, weight: 700, fill: "#ffffff" });
+      const y = 60 + i * 90;
+      chip(s, 40, y, 200, 70, r.fn, r.c, { size: 15, weight: 800, fill: "#ffffff" });
+      arrow(s, 255, y + 35, 320, y + 35, { stroke: COL.ink, strokeWidth: 2 });
+      chip(s, 330, y, 590, 70, r.art, r.c, { size: 13, weight: 700, fill: "#ffffff" });
     });
   }
 
@@ -219,7 +219,7 @@
   // Part 3 intro: Seven controls
   // -------------------------------------------------------------
   function drawSevenControls(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
     const ctrls = zh
       ? ["1 自主边界", "2 意图 IBAC", "3 记忆卫生", "4 轨迹观测", "5 运行引导", "6 ROI 评估", "7 模型经济"]
@@ -228,9 +228,9 @@
     ctrls.forEach((lab, i) => {
       const col = i < 4 ? 0 : 1;
       const row = i < 4 ? i : i - 4;
-      const x = 30 + col * 310;
-      const y = 30 + row * 80;
-      chip(s, x, y, 290, 60, lab, colors[i], { size: 14, fill: "#ffffff", weight: 700 });
+      const x = 40 + col * 460;
+      const y = 36 + row * 96;
+      chip(s, x, y, 420, 78, lab, colors[i], { size: 15, fill: "#ffffff", weight: 700 });
     });
   }
 
@@ -400,119 +400,102 @@
   // Slide 8 Diagram: Pillar 5: Active Runtime Steering
   // -------------------------------------------------------------
   function drawRuntimeSteering(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // 1. Left Card: Agent Reasoning Core
-    rect(s, 15, 20, 185, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
-    txt(s, 107, 45, zh ? "🧠 智能体推理核心" : "🧠 Agent Reasoning Core", { anchor: "middle", weight: 700, col: COL.blue, size: 12.5 });
+    rect(s, 12, 18, 270, 404, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
+    txt(s, 147, 48, zh ? "🧠 智能体推理核心" : "🧠 Reasoning Core", { anchor: "middle", weight: 700, col: COL.blue, size: 13 });
 
-    chip(s, 25, 65, 165, 32, "Thought: Patch Auth", COL.blue, { size: 11, fill: "#ffffff" });
-    chip(s, 25, 103, 165, 32, "Intent: Fix Bug #104", COL.blue, { size: 11, fill: "#ffffff" });
-    chip(s, 25, 141, 165, 32, "Tool: exec_shell()", COL.grape, { size: 11, fill: "#ffffff" });
-    chip(s, 25, 179, 165, 32, "Args: {cmd: rm -rf}", COL.teal, { size: 11, fill: "#ffffff" });
+    chip(s, 28, 72, 238, 44, "Thought: Patch Auth", COL.blue, { size: 12, fill: "#ffffff" });
+    chip(s, 28, 128, 238, 44, "Intent: Fix Bug #104", COL.blue, { size: 12, fill: "#ffffff" });
+    chip(s, 28, 184, 238, 44, "Tool: exec_shell()", COL.grape, { size: 12, fill: "#ffffff" });
+    chip(s, 28, 240, 238, 44, "Args: {cmd: rm -rf}", COL.teal, { size: 12, fill: "#ffffff" });
+    chip(s, 28, 300, 238, 64, zh ? "⚠️ 待放行动作请求\n(Zero Ambient Auth)" : "⚠️ Action Request\n(Pending Gateway)", COL.orange, { size: 12, fill: "#ffffff" });
+    txt(s, 147, 396, zh ? "零环境执行特权" : "Zero Ambient Privilege", { anchor: "middle", size: 12, col: COL.slate, weight: 600 });
 
-    chip(s, 25, 222, 165, 48, zh ? "⚠️ 待放行动作请求\n(Zero Ambient Auth)" : "⚠️ Action Request\n(Pending Gateway Check)", COL.orange, { size: 11, fill: "#ffffff" });
-    txt(s, 107, 305, zh ? "零环境执行特权" : "Zero Ambient Privilege", { anchor: "middle", size: 11, col: COL.slate, weight: 600 });
+    arrow(s, 292, 220, 324, 220, { stroke: COL.ink, strokeWidth: 2 });
 
-    // Arrow to Gateway
-    arrow(s, 200, 177, 225, 177, { stroke: COL.ink, strokeWidth: 2 });
+    rect(s, 332, 18, 360, 404, { fill: "#ffffff", fillStyle: "solid", stroke: COL.red, strokeWidth: 2.2 });
+    txt(s, 512, 48, zh ? "🛡️ 确定性运行时控制网关" : "🛡️ Deterministic Control Plane", { anchor: "middle", weight: 700, col: COL.red, size: 13 });
 
-    // 2. Center Card: Deterministic Control Gateway
-    rect(s, 225, 20, 240, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.red, strokeWidth: 2.2 });
-    txt(s, 345, 45, zh ? "🛡️ 确定性运行时控制网关" : "🛡️ Deterministic Control Plane", { anchor: "middle", weight: 700, col: COL.red, size: 12.5 });
+    chip(s, 350, 70, 324, 56, zh ? "1. PreToolUse 拦截核验\n(Schema / 限额 / SJD)" : "1. PreToolUse Interceptor\n(Schema / Invariants / SJD)", COL.red, { size: 12, fill: "#ffffff" });
+    chip(s, 350, 138, 324, 56, zh ? "2. 动态策略与风控仲裁\n(Policy Arbiter)" : "2. Dynamic Policy Arbiter\n(Dual-Agent / Escalation)", COL.orange, { size: 12, fill: "#ffffff" });
+    chip(s, 350, 206, 324, 56, zh ? "3. PostToolUse 脱敏净化\n(抹除注入 / 隐藏凭据)" : "3. PostToolUse Sanitizer\n(Strip Injection Payloads)", COL.teal, { size: 12, fill: "#ffffff" });
 
-    chip(s, 235, 65, 220, 40, zh ? "1. PreToolUse 拦截核验\n(Schema / 限额 / SJD 意图)" : "1. PreToolUse Interceptor\n(Schema / Invariants / SJD)", COL.red, { size: 11.5, fill: "#ffffff" });
-    chip(s, 235, 112, 220, 38, zh ? "2. 动态策略与风控仲裁\n(Policy Arbiter)" : "2. Dynamic Policy Arbiter\n(Dual-Agent / Escalation)", COL.orange, { size: 11.5, fill: "#ffffff" });
-    chip(s, 235, 156, 220, 40, zh ? "3. PostToolUse 脱敏净化\n(抹除注入 / 隐藏凭据)" : "3. PostToolUse Sanitizer\n(Strip Injection Payloads)", COL.teal, { size: 11.5, fill: "#ffffff" });
+    rect(s, 350, 276, 324, 132, { fill: "#f8fafc", fillStyle: "solid", stroke: COL.ink, strokeWidth: 1.2 });
+    txt(s, 512, 296, zh ? "网关四项确定性裁决" : "4 Deterministic Actions", { anchor: "middle", size: 12, weight: 700, col: COL.ink });
+    txt(s, 366, 320, zh ? "• APPROVE: 放行合规请求" : "• APPROVE: Allow valid call", { size: 12, col: COL.green, weight: 700 });
+    txt(s, 366, 344, zh ? "• STEER: 重写参数/注入提示" : "• STEER: Mutate / Re-prompt", { size: 12, col: COL.blue, weight: 700 });
+    txt(s, 366, 368, zh ? "• SANDBOX: 重定向至沙箱" : "• SANDBOX: Divert to testbed", { size: 12, col: COL.teal, weight: 700 });
+    txt(s, 366, 392, zh ? "• KILL: 吊销凭据硬熔断" : "• KILL: Circuit break & freeze", { size: 12, col: COL.red, weight: 700 });
 
-    // Sub-box inside Gateway: Decision Primitives
-    rect(s, 235, 204, 220, 120, { fill: "#f8fafc", fillStyle: "solid", stroke: COL.ink, strokeWidth: 1.2 });
-    txt(s, 345, 222, zh ? "网关四项确定性裁决动作" : "4 Deterministic Decision Actions", { anchor: "middle", size: 11.5, weight: 700, col: COL.ink });
-    txt(s, 245, 244, zh ? "• APPROVE: 放行合规请求" : "• APPROVE: Allow valid call", { size: 11, col: COL.green, weight: 700 });
-    txt(s, 245, 266, zh ? "• STEER: 重写参数/注入提示" : "• STEER: Mutate / Re-prompt", { size: 11, col: COL.blue, weight: 700 });
-    txt(s, 245, 288, zh ? "• SANDBOX: 重定向至沙箱" : "• SANDBOX: Divert to testbed", { size: 11, col: COL.teal, weight: 700 });
-    txt(s, 245, 310, zh ? "• KILL: 吊销凭据硬熔断" : "• KILL: Circuit break & freeze", { size: 11, col: COL.red, weight: 700 });
+    arrow(s, 702, 98, 732, 98, { stroke: COL.green, strokeWidth: 2 });
+    arrow(s, 702, 220, 732, 220, { stroke: COL.teal, strokeWidth: 2 });
+    arrow(s, 702, 340, 732, 340, { stroke: COL.red, strokeWidth: 2 });
 
-    // 3 Arrows to Target Outcomes
-    arrow(s, 465, 85, 495, 85, { stroke: COL.green, strokeWidth: 2 });
-    arrow(s, 465, 175, 495, 175, { stroke: COL.teal, strokeWidth: 2 });
-    arrow(s, 465, 265, 495, 265, { stroke: COL.red, strokeWidth: 2 });
-
-    // 3. Right Column: 3 Target Outcome Cards
-    chip(s, 495, 55, 155, 62, zh ? "✓ 真实生产环境\n(代码库 / 云API)" : "✓ Production Rails\n(Repo / Cloud API)", COL.green, { size: 11.5, fill: "#ffffff" });
-    chip(s, 495, 145, 155, 62, zh ? "⚡ 隔离沙箱工作区\n(Worktree 影子试运行)" : "⚡ Sandbox Worktree\n(Isolated Shadow Run)", COL.teal, { size: 11.5, fill: "#ffffff" });
-    chip(s, 495, 235, 155, 62, zh ? "🛑 硬熔断与冻结\n(吊销密钥 & 终止会话)" : "🛑 Hard Kill Switch\n(Revoke Token & Freeze)", COL.red, { size: 11.5, fill: "#ffffff" });
+    chip(s, 728, 58, 216, 80, zh ? "✓ 真实生产环境\n(代码库 / 云API)" : "✓ Production\n(Repo / Cloud API)", COL.green, { size: 12, fill: "#ffffff" });
+    chip(s, 728, 180, 216, 80, zh ? "⚡ 隔离沙箱工作区\n(Worktree 影子)" : "⚡ Sandbox\n(Isolated Shadow)", COL.teal, { size: 12, fill: "#ffffff" });
+    chip(s, 728, 302, 216, 80, zh ? "🛑 硬熔断与冻结\n(吊销 & 终止)" : "🛑 Kill Switch\n(Revoke & Freeze)", COL.red, { size: 12, fill: "#ffffff" });
   }
 
   // -------------------------------------------------------------
   // Slide 9 Diagram: Pillar 6: Rigorous Evaluation & Benchmarking
   // -------------------------------------------------------------
   function drawBenchmarkMatrix(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // 4 Benchmark Metrics Quadrants
-    chip(s, 20, 25, 295, 140, "", COL.blue);
-    txt(s, 167, 52, zh ? "任务完成率 (TCR)" : "Task Completion Rate (TCR)", { anchor: "middle", weight: 700, col: COL.blue, size: 13 });
-    txt(s, 35, 80, zh ? "• 端到端长程复杂工程任务解决比例" : "• % of complex multi-turn goals met", { size: 11.5 });
-    txt(s, 35, 102, zh ? "• 跨工具编排与自动化修复成功率" : "• Cross-tool resilient problem solving", { size: 11.5 });
-    txt(s, 35, 126, zh ? "• 企业级合格基线：≥ 90.0%" : "• Production Target: ≥ 90.0%", { size: 11.5, col: COL.blue, weight: 700 });
+    chip(s, 20, 20, 450, 190, "", COL.blue);
+    txt(s, 245, 55, zh ? "任务完成率 (TCR)" : "Task Completion Rate (TCR)", { anchor: "middle", weight: 700, col: COL.blue, size: 14 });
+    txt(s, 44, 95, zh ? "• 端到端长程复杂工程任务解决比例" : "• % of complex multi-turn goals met", { size: 13 });
+    txt(s, 44, 130, zh ? "• 跨工具编排与自动化修复成功率" : "• Cross-tool resilient problem solving", { size: 13 });
+    txt(s, 44, 165, zh ? "• 企业级合格基线：≥ 90.0%" : "• Production Target: ≥ 90.0%", { size: 13, col: COL.blue, weight: 700 });
 
-    chip(s, 345, 25, 295, 140, "", COL.red);
-    txt(s, 492, 52, zh ? "成功交付单价 (CPST)" : "Cost Per Success Task (CPST)", { anchor: "middle", weight: 700, col: COL.red, size: 13 });
-    txt(s, 360, 80, zh ? "• 总算力及模型费用 / 验收交付物数" : "• Total compute spend / verified tasks", { size: 11.5 });
-    txt(s, 360, 102, zh ? "• 杜绝无效重试循环造成的成本失控" : "• Measures real economic unit cost", { size: 11.5 });
-    txt(s, 360, 126, zh ? "• 目标：对比人工成本降至 1/10" : "• Target: <10% of human equivalent", { size: 11.5, col: COL.red, weight: 700 });
+    chip(s, 490, 20, 450, 190, "", COL.red);
+    txt(s, 715, 55, zh ? "成功交付单价 (CPST)" : "Cost Per Success Task (CPST)", { anchor: "middle", weight: 700, col: COL.red, size: 14 });
+    txt(s, 514, 95, zh ? "• 总算力及模型费用 / 验收交付物数" : "• Total compute spend / verified tasks", { size: 13 });
+    txt(s, 514, 130, zh ? "• 杜绝无效重试循环造成的成本失控" : "• Measures real economic unit cost", { size: 13 });
+    txt(s, 514, 165, zh ? "• 目标：对比人工成本降至 1/10" : "• Target: <10% of human equivalent", { size: 13, col: COL.red, weight: 700 });
 
-    chip(s, 20, 185, 295, 140, "", COL.green);
-    txt(s, 167, 212, zh ? "Token 效能比 (TER)" : "Token Efficiency Ratio (TER)", { anchor: "middle", weight: 700, col: COL.green, size: 13 });
-    txt(s, 35, 240, zh ? "• 理论最少步骤 / 实际消耗步骤" : "• Optimal steps vs actual steps taken", { size: 11.5 });
-    txt(s, 35, 262, zh ? "• 上下文动态裁剪与提示词优化" : "• Pruned schemas eliminate bloat", { size: 11.5 });
-    txt(s, 35, 286, zh ? "• 杜绝冗余推理，节省 70% 消耗" : "• Eliminates bloat, saves up to 70%", { size: 11.5, col: COL.green, weight: 700 });
+    chip(s, 20, 230, 450, 190, "", COL.green);
+    txt(s, 245, 265, zh ? "Token 效能比 (TER)" : "Token Efficiency Ratio (TER)", { anchor: "middle", weight: 700, col: COL.green, size: 14 });
+    txt(s, 44, 305, zh ? "• 理论最少步骤 / 实际消耗步骤" : "• Optimal steps vs actual steps taken", { size: 13 });
+    txt(s, 44, 340, zh ? "• 上下文动态裁剪与提示词优化" : "• Pruned schemas eliminate bloat", { size: 13 });
+    txt(s, 44, 375, zh ? "• 杜绝冗余推理，节省 70% 消耗" : "• Eliminates bloat, saves up to 70%", { size: 13, col: COL.green, weight: 700 });
 
-    chip(s, 345, 185, 295, 140, "", COL.grape);
-    txt(s, 492, 212, zh ? "人工精力节省度 (HER)" : "Human Effort Reduction (HER)", { anchor: "middle", weight: 700, col: COL.grape, size: 13 });
-    txt(s, 360, 240, zh ? "• 高级工程师净节约时间 / 总工时" : "• Net senior dev hours reclaimed", { size: 11.5 });
-    txt(s, 360, 262, zh ? "• 扣除监督看护与提示词审查精力" : "• Net of prompt review & supervision", { size: 11.5 });
-    txt(s, 360, 286, zh ? "• 规模化落地达标线：≥ 80.0%" : "• Production Target: ≥ 80.0%", { size: 11.5, col: COL.grape, weight: 700 });
+    chip(s, 490, 230, 450, 190, "", COL.grape);
+    txt(s, 715, 265, zh ? "人工精力节省度 (HER)" : "Human Effort Reduction (HER)", { anchor: "middle", weight: 700, col: COL.grape, size: 14 });
+    txt(s, 514, 305, zh ? "• 高级工程师净节约时间 / 总工时" : "• Net senior dev hours reclaimed", { size: 13 });
+    txt(s, 514, 340, zh ? "• 扣除监督看护与提示词审查精力" : "• Net of prompt review & supervision", { size: 13 });
+    txt(s, 514, 375, zh ? "• 规模化落地达标线：≥ 80.0%" : "• Production Target: ≥ 80.0%", { size: 13, col: COL.grape, weight: 700 });
   }
 
   // -------------------------------------------------------------
   // Slide 10 Diagram: Pillar 7: Mixed-Model Cascaded Routing
   // -------------------------------------------------------------
   function drawMixedModelRouting(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // Left Box: Inbound Requests
-    chip(s, 15, 130, 155, 75, zh ? "多智能体任务请求\n(用户 / 自动化工作流)" : "Agent Task Requests\n(Users / Workflows)", COL.ink, { size: 11.5, fill: "#ffffff" });
+    chip(s, 12, 160, 220, 100, zh ? "多智能体任务请求\n(用户 / 自动化工作流)" : "Agent Task Requests\n(Users / Workflows)", COL.ink, { size: 12, fill: "#ffffff" });
 
-    arrow(s, 170, 167, 195, 167, { stroke: COL.ink, strokeWidth: 2 });
+    arrow(s, 242, 210, 274, 210, { stroke: COL.ink, strokeWidth: 2 });
 
-    // Center Card: Complexity & Security Classifier
-    rect(s, 195, 30, 185, 295, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
-    txt(s, 287, 55, zh ? "智能级联路由网关" : "Cascaded Task Router", { anchor: "middle", weight: 700, col: COL.blue, size: 12.5 });
-    chip(s, 205, 75, 165, 42, zh ? "任务难度分类器\n(Complexity Filter)" : "Complexity Classifier\n(Rule & AST Check)", COL.blue, { size: 11, fill: "#ffffff" });
-    chip(s, 205, 128, 165, 42, zh ? "数据敏感度分级\n(Privacy Boundary)" : "Privacy Classifier\n(Local vs Cloud)", COL.teal, { size: 11, fill: "#ffffff" });
-    chip(s, 205, 181, 165, 42, zh ? "输出前置浓缩\n(Distillation)" : "Distillation Engine\n(Prune Verbose Output)", COL.orange, { size: 11, fill: "#ffffff" });
-    chip(s, 205, 234, 165, 42, zh ? "失败自动升级\n(Escalation Gate)" : "Auto-Escalation\n(On test failure)", COL.grape, { size: 11, fill: "#ffffff" });
-    txt(s, 287, 305, zh ? "削减 75%–85% 推理费" : "75%–85% Cost Savings", { anchor: "middle", size: 11.5, col: COL.green, weight: 700 });
+    rect(s, 282, 24, 260, 392, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
+    txt(s, 412, 56, zh ? "智能级联路由网关" : "Cascaded Task Router", { anchor: "middle", weight: 700, col: COL.blue, size: 13 });
+    chip(s, 298, 80, 228, 56, zh ? "任务难度分类器\n(Complexity Filter)" : "Complexity Classifier\n(Rule & AST Check)", COL.blue, { size: 12, fill: "#ffffff" });
+    chip(s, 298, 150, 228, 56, zh ? "数据敏感度分级\n(Privacy Boundary)" : "Privacy Classifier\n(Local vs Cloud)", COL.teal, { size: 12, fill: "#ffffff" });
+    chip(s, 298, 220, 228, 56, zh ? "输出前置浓缩\n(Distillation)" : "Distillation Engine\n(Prune Verbose)", COL.orange, { size: 12, fill: "#ffffff" });
+    chip(s, 298, 290, 228, 56, zh ? "失败自动升级\n(Escalation Gate)" : "Auto-Escalation\n(On test failure)", COL.grape, { size: 12, fill: "#ffffff" });
+    txt(s, 412, 380, zh ? "削减 75%–85% 推理费" : "75%–85% Cost Savings", { anchor: "middle", size: 13, col: COL.green, weight: 700 });
 
-    // 3 Arrows to the Right
-    arrow(s, 380, 80, 420, 60, { stroke: COL.green, strokeWidth: 2 });
-    arrow(s, 380, 167, 420, 167, { stroke: COL.teal, strokeWidth: 2 });
-    arrow(s, 380, 255, 420, 275, { stroke: COL.purple, strokeWidth: 2 });
+    arrow(s, 552, 108, 592, 80, { stroke: COL.green, strokeWidth: 2 });
+    arrow(s, 552, 210, 592, 210, { stroke: COL.teal, strokeWidth: 2 });
+    arrow(s, 552, 318, 592, 340, { stroke: COL.purple, strokeWidth: 2 });
 
-    // Right Column: 3 Model Tiers
-    // Tier 1: Local / Edge
-    chip(s, 420, 25, 225, 75, zh ? "Tier 1: 本地端侧开源模型 ($0)\n(Qwen 2.5 7B / Llama 3.2 on Ollama)\n正则抽取 · JSON校验 · AST Lint" : "Tier 1: Local / Edge ($0/M)\n(Qwen 2.5 7B / Llama 3.2 Ollama)\nRegex · JSON Parsing · Linting", COL.green, { size: 11, fill: "#ffffff" });
-
-    // Tier 2: Hosted Open-Weights
-    chip(s, 420, 130, 225, 75, zh ? "Tier 2: 托管开源主力 ($0.25–$1.00/M)\n(DeepSeek-V3 / Llama 3.3 70B)\n代码草稿 · 单元测试 · 文档撰写" : "Tier 2: Open-Weights ($0.25–$1.00/M)\n(DeepSeek-V3 / Llama 3.3 70B)\nDrafting · Unit Tests · Docstrings", COL.teal, { size: 11, fill: "#ffffff" });
-
-    // Tier 3: Frontier Models
-    chip(s, 420, 235, 225, 75, zh ? "Tier 3: 前沿大模型 ($3–$15/M)\n(Claude 3.7 Sonnet / GPT-4.5)\n架构拆解 · 疑难审计 · 最终把关" : "Tier 3: Frontier Models ($3–$15/M)\n(Claude 3.7 Sonnet / GPT-4.5)\nArchitecture · Audit · Final Pass", COL.purple, { size: 11, fill: "#ffffff" });
+    chip(s, 600, 28, 340, 100, zh ? "Tier 1: 本地端侧 ($0)\nQwen / Llama on Ollama\n正则 · JSON · AST Lint" : "Tier 1: Local / Edge ($0/M)\nQwen 2.5 / Llama on Ollama\nRegex · JSON · Linting", COL.green, { size: 12, fill: "#ffffff" });
+    chip(s, 600, 160, 340, 100, zh ? "Tier 2: 托管开源 ($0.25–$1/M)\nDeepSeek-V3 / Llama 70B\n草稿 · 单测 · 文档" : "Tier 2: Open-Weights ($0.25–$1/M)\nDeepSeek-V3 / Llama 70B\nDrafting · Tests · Docs", COL.teal, { size: 12, fill: "#ffffff" });
+    chip(s, 600, 292, 340, 100, zh ? "Tier 3: 前沿模型 ($3–$15/M)\nClaude / GPT\n架构 · 审计 · 终审" : "Tier 3: Frontier ($3–$15/M)\nClaude / GPT\nArchitecture · Audit · Final", COL.purple, { size: 12, fill: "#ffffff" });
   }
 
   // -------------------------------------------------------------
@@ -560,33 +543,33 @@
   // Slide 12 Diagram: Executive Synthesis & ROI Architecture
   // -------------------------------------------------------------
   function drawROISynthesis(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    rect(s, 180, 130, 300, 90, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2.5 });
-    txt(s, 330, 165, zh ? "🛡️ 智能体生产力 ROI" : "🛡️ AGENTIC PRODUCTIVITY ROI", { anchor: "middle", weight: 800, col: COL.blue, size: 14 });
-    txt(s, 330, 195, zh ? "价值 · 风险 · 七项战术控制" : "Value · Risk · 7 Tactical Controls", { anchor: "middle", size: 12, col: COL.slate });
+    rect(s, 260, 150, 440, 120, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2.5 });
+    txt(s, 480, 195, zh ? "🛡️ 智能体生产力 ROI" : "🛡️ AGENTIC PRODUCTIVITY ROI", { anchor: "middle", weight: 800, col: COL.blue, size: 15 });
+    txt(s, 480, 235, zh ? "价值 · 风险 · 七项战术控制" : "Value · Risk · 7 Tactical Controls", { anchor: "middle", size: 13, col: COL.slate });
 
-    chip(s, 40, 35, 180, 55, zh ? "Part 1\n四类投资桶" : "Part 1\n4 Investment Buckets", COL.blue, { size: 12.5, fill: "#ffffff" });
-    arrow(s, 220, 62, 250, 140, { stroke: COL.blue });
+    chip(s, 40, 36, 260, 80, zh ? "Part 1\n四类投资桶" : "Part 1\n4 Investment Buckets", COL.blue, { size: 13, fill: "#ffffff" });
+    arrow(s, 300, 76, 360, 160, { stroke: COL.blue });
 
-    chip(s, 240, 35, 180, 55, zh ? "Part 2\nNIST RMF 映射" : "Part 2\nNIST RMF Mapping", COL.orange, { size: 12.5, fill: "#ffffff" });
-    arrow(s, 330, 90, 330, 130, { stroke: COL.orange });
+    chip(s, 350, 36, 260, 80, zh ? "Part 2\nNIST RMF 映射" : "Part 2\nNIST RMF Mapping", COL.orange, { size: 13, fill: "#ffffff" });
+    arrow(s, 480, 116, 480, 150, { stroke: COL.orange });
 
-    chip(s, 440, 35, 180, 55, zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", COL.green, { size: 12.5, fill: "#ffffff" });
-    arrow(s, 440, 62, 410, 140, { stroke: COL.green });
+    chip(s, 660, 36, 260, 80, zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", COL.green, { size: 13, fill: "#ffffff" });
+    arrow(s, 660, 76, 600, 160, { stroke: COL.green });
 
     const bottom = zh
       ? ["自主 / IBAC / 记忆", "观测 / 引导", "评估 / 模型经济"]
-      : ["Autonomy / IBAC / Memory", "Observe / Steer", "Eval / Model Econ"];
+      : ["Autonomy · IBAC · Memory", "Observe · Steer", "Eval · Model Econ"];
     const bcols = [COL.grape, COL.teal, COL.purple];
     bottom.forEach((lab, i) => {
-      chip(s, 40 + i * 210, 250, 190, 48, lab, bcols[i], { size: 12, fill: "#ffffff" });
+      chip(s, 28 + i * 312, 296, 300, 72, lab, bcols[i], { size: 12.5, fill: "#ffffff" });
     });
 
-    rect(s, 20, 315, 620, 34, { fill: "#f0fdf4", fillStyle: "solid", stroke: COL.green, strokeWidth: 1.8 });
-    txt(s, 330, 332, zh ? "✓ 正确投资 · 可控风险 · 可证明单位经济效益" : "✓ Right bets · Managed risk · Provable unit economics", {
-      anchor: "middle", size: 12, col: COL.green, weight: 700
+    rect(s, 36, 382, 888, 44, { fill: "#f0fdf4", fillStyle: "solid", stroke: COL.green, strokeWidth: 1.8 });
+    txt(s, 480, 404, zh ? "✓ 正确投资 · 可控风险 · 可证明单位经济效益" : "✓ Right bets · Managed risk · Provable unit economics", {
+      anchor: "middle", size: 13, col: COL.green, weight: 700
     });
   }
 
