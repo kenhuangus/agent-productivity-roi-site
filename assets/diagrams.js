@@ -132,20 +132,26 @@
   // Agenda: Three Parts
   // -------------------------------------------------------------
   function drawAgendaThreeParts(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
     const parts = [
-      { t: zh ? "Part 1\n业务价值" : "Part 1\nBusiness Value", d: zh ? "四类 IT 系统投资桶\n生产力与价值获取" : "4 IT system buckets\nProductivity & value", c: COL.blue },
-      { t: zh ? "Part 2\n风险管理" : "Part 2\nRisk Management", d: zh ? "NIST RMF 映射\nCSA · MAESTRO · AIVSS" : "NIST RMF mapping\nCSA · MAESTRO · AIVSS", c: COL.orange },
-      { t: zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", d: zh ? "自主 · 意图 · 记忆\n观测 · 引导 · 评估 · 经济" : "Autonomy · IBAC · Memory\nObs · Steer · Eval · Econ", c: COL.green }
+      { t: zh ? "Part 1\n业务价值" : "Part 1\nValue", d: zh ? "四类投资桶" : "4 IT buckets", c: COL.blue },
+      { t: zh ? "Part 2\n风险管理" : "Part 2\nRisk", d: zh ? "NIST RMF 映射" : "NIST RMF", c: COL.orange },
+      { t: zh ? "Part 3\n七项控制" : "Part 3\nControls", d: zh ? "战术控制" : "7 tactical", c: COL.green }
     ];
+    const cardW = 280;
+    const gap = 36;
+    const startX = 24;
     parts.forEach((p, i) => {
-      const x = 25 + i * 215;
-      rect(s, x, 40, 200, 280, { fill: "#ffffff", fillStyle: "solid", stroke: p.c, strokeWidth: 2.2 });
-      txt(s, x + 100, 90, p.t, { anchor: "middle", weight: 800, col: p.c, size: 16 });
-      txt(s, x + 100, 180, p.d, { anchor: "middle", weight: 600, col: COL.ink, size: 13 });
-      txt(s, x + 100, 280, zh ? `第 ${i + 1} 步` : `Step ${i + 1}`, { anchor: "middle", weight: 700, col: p.c, size: 12 });
-      if (i < 2) arrow(s, x + 205, 180, x + 210, 180, { stroke: COL.ink, strokeWidth: 2 });
+      const x = startX + i * (cardW + gap);
+      rect(s, x, 24, cardW, 392, { fill: "#ffffff", fillStyle: "solid", stroke: p.c, strokeWidth: 2.4 });
+      txt(s, x + cardW / 2, 120, p.t, { anchor: "middle", weight: 800, col: p.c, size: 15 });
+      txt(s, x + cardW / 2, 230, p.d, { anchor: "middle", weight: 600, col: COL.ink, size: 13 });
+      txt(s, x + cardW / 2, 350, zh ? `第 ${i + 1} 步` : `Step ${i + 1}`, { anchor: "middle", weight: 700, col: p.c, size: 13 });
+      if (i < 2) {
+        const ax = x + cardW + 6;
+        arrow(s, ax, 220, ax + gap - 14, 220, { stroke: COL.ink, strokeWidth: 2.2 });
+      }
     });
   }
 
@@ -232,39 +238,42 @@
   // Slide 4 Diagram: Pillar 1: Levels of Autonomy & Tool Governance
   // -------------------------------------------------------------
   function drawAutonomyGovernance(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 460);
     const zh = isZh();
 
-    // Left Column: LoA 0 to LoA 4 Spectrum (Solid Card)
-    rect(s, 15, 20, 260, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
-    txt(s, 145, 45, zh ? "自主权等级 (LoA) 阶梯" : "Levels of Autonomy (LoA)", { anchor: "middle", weight: 700, col: COL.blue, size: 13 });
+    // Left Column: LoA spectrum
+    rect(s, 16, 14, 400, 432, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2.2 });
+    txt(s, 216, 46, zh ? "自主权等级 (LoA)" : "Levels of Autonomy", { anchor: "middle", weight: 800, col: COL.blue, size: 13 });
 
     const tiers = [
-      { l: zh ? "LoA 0: 只读检索 (Zero Write)" : "LoA 0: Read-Only (Docs / Search)", c: COL.slate },
-      { l: zh ? "LoA 1: 草稿补丁 (Human Apply)" : "LoA 1: Draft Code (Human Apply)", c: COL.blue },
-      { l: zh ? "LoA 2: 沙箱自主 (Git Worktree)" : "LoA 2: Sandboxed Auto ($50 Cap)", c: COL.teal },
-      { l: zh ? "LoA 3: 监督执行 (双模型复核)" : "LoA 3: Supervised Full (Dual Check)", c: COL.yellow },
-      { l: zh ? "LoA 4: 有界全自主 (自动熔断)" : "LoA 4: Autonomous with Breaker", c: COL.green }
+      { l: zh ? "LoA 0: 只读" : "LoA 0: Read-Only", c: COL.slate },
+      { l: zh ? "LoA 1: 草稿" : "LoA 1: Draft + Human", c: COL.blue },
+      { l: zh ? "LoA 2: 沙箱 $50" : "LoA 2: Sandbox $50", c: COL.teal },
+      { l: zh ? "LoA 3: 监督全自动" : "LoA 3: Supervised", c: COL.yellow },
+      { l: zh ? "LoA 4: 有界全自主" : "LoA 4: Bounded Auto", c: COL.green }
     ];
 
     tiers.forEach((t, i) => {
-      chip(s, 25, 65 + i * 49, 240, 38, t.l, t.c, { size: 11.5, fill: "#ffffff" });
+      chip(s, 36, 70 + i * 62, 360, 52, t.l, t.c, { size: 12, fill: "#ffffff", weight: 700 });
     });
-    txt(s, 145, 320, zh ? "明确工具权限，拒绝模糊越权" : "Strict Tool Allowlists per Tier", { anchor: "middle", size: 11, col: COL.slate, weight: 600 });
+    txt(s, 216, 420, zh ? "按级限制工具" : "Tool allowlists per tier", { anchor: "middle", size: 11, col: COL.slate, weight: 600 });
 
-    // Arrow to Gateway
-    arrow(s, 280, 175, 310, 175, { stroke: COL.ink, strokeWidth: 2 });
+    arrow(s, 428, 230, 478, 230, { stroke: COL.ink, strokeWidth: 2.4 });
 
-    // Right Column: Automated Escalation & Gateways (Solid Card)
-    rect(s, 310, 20, 335, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
-    txt(s, 477, 45, zh ? "🛡️ 门限控制与动态降级网关" : "🛡️ Threshold & Escalation Gateways", { anchor: "middle", weight: 700, col: COL.orange, size: 13 });
+    // Right Column: Gateways
+    rect(s, 490, 14, 454, 432, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2.2 });
+    txt(s, 717, 46, zh ? "门限与降级网关" : "Threshold Gateways", { anchor: "middle", weight: 800, col: COL.orange, size: 13 });
 
-    chip(s, 325, 68, 305, 45, zh ? "1. 工具风险分类 (Tool Risk Tiering)\n只读工具即刻放行 · 写入工具强制审批" : "1. Tool Risk Tiering\nRead tools pass · Write tools gated", COL.teal, { size: 11.5, fill: "#ffffff" });
-    chip(s, 325, 125, 305, 45, zh ? "2. 资金与调用速率门限 (Spend Cap)\n单任务限额 $50 · 速率限制 10 次/分" : "2. Spend & Velocity Caps\n$50/task cap · Max 10 tool calls/min", COL.blue, { size: 11.5, fill: "#ffffff" });
-    chip(s, 325, 182, 305, 45, zh ? "3. 异常漂移自动降级 (LoA Step-Down)\n发现未授权偏航立即自动从 LoA 3 降至 LoA 1" : "3. Automated Step-Down\nCosine drift > 0.4 demotes agent to LoA 1", COL.yellow, { size: 11.5, fill: "#ffffff" });
-    chip(s, 325, 239, 305, 45, zh ? "4. 紧急硬熔断器 (Circuit Breaker)\n工具连续失败 3 次立即冻结密钥阻断消耗" : "4. Automated Circuit Breaker\n>3 tool failures triggers instant freeze", COL.red, { size: 11.5, fill: "#ffffff" });
-
-    txt(s, 477, 315, zh ? "✓ 消除人为看护成本，守住零破坏红线" : "✓ Eliminates human toil while securing safety", { anchor: "middle", size: 11.5, col: COL.green, weight: 700 });
+    const gates = [
+      { l: zh ? "1. 工具风险分级" : "1. Tool risk tiering", c: COL.teal },
+      { l: zh ? "2. 花费/速率上限" : "2. Spend & rate caps", c: COL.blue },
+      { l: zh ? "3. 漂移自动降级" : "3. Auto LoA step-down", c: COL.yellow },
+      { l: zh ? "4. 硬熔断器" : "4. Circuit breaker", c: COL.red }
+    ];
+    gates.forEach((g, i) => {
+      chip(s, 512, 76 + i * 72, 410, 58, g.l, g.c, { size: 12, fill: "#ffffff", weight: 700 });
+    });
+    txt(s, 717, 420, zh ? "✓ 控成本 · 控爆炸半径" : "✓ Cap cost · Cap blast radius", { anchor: "middle", size: 11, col: COL.green, weight: 700 });
   }
 
   // -------------------------------------------------------------
