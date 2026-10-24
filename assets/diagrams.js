@@ -134,7 +134,7 @@
     const zh = isZh();
     const parts = [
       { t: zh ? "Part 1\n业务价值" : "Part 1\nBusiness Value", d: zh ? "四类 IT 系统投资桶\n生产力与价值获取" : "4 IT system buckets\nProductivity & value", c: COL.blue },
-      { t: zh ? "Part 2\n风险管理" : "Part 2\nRisk Management", d: zh ? "NIST · EU AI Act\nMAESTRO · AIVSS · CSA" : "NIST · EU AI Act\nMAESTRO · AIVSS · CSA", c: COL.orange },
+      { t: zh ? "Part 2\n风险管理" : "Part 2\nRisk Management", d: zh ? "NIST RMF 映射\nCSA · MAESTRO · AIVSS" : "NIST RMF mapping\nCSA · MAESTRO · AIVSS", c: COL.orange },
       { t: zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", d: zh ? "自主 · 意图 · 记忆\n观测 · 引导 · 评估 · 经济" : "Autonomy · IBAC · Memory\nObs · Steer · Eval · Econ", c: COL.green }
     ];
     parts.forEach((p, i) => {
@@ -169,42 +169,41 @@
   }
 
   // -------------------------------------------------------------
-  // Part 2a: Policy — NIST + EU AI Act
+  // Part 2: NIST AI RMF ← CSA / AIVSS mapping
   // -------------------------------------------------------------
-  function drawRiskPolicy(host) {
+  function drawRiskRmfMapping(host) {
     const s = scene(host, 660, 360);
     const zh = isZh();
-    rect(s, 20, 30, 300, 300, { fill: "#ffffff", fillStyle: "solid", stroke: COL.blue, strokeWidth: 2 });
-    txt(s, 170, 65, zh ? "NIST AI RMF" : "NIST AI RMF", { anchor: "middle", weight: 800, col: COL.blue, size: 16 });
-    ["Govern", "Map", "Measure", "Manage"].forEach((lab, i) => {
-      chip(s, 45, 95 + i * 50, 250, 40, lab, COL.blue, { size: 13, fill: "#ffffff" });
-    });
-    rect(s, 340, 30, 300, 300, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
-    txt(s, 490, 65, zh ? "EU AI Act" : "EU AI Act", { anchor: "middle", weight: 800, col: COL.orange, size: 16 });
-    const eu = zh
-      ? ["用例风险分级", "高风险强制控制", "上线前文档化"]
-      : ["Risk-tier use-cases", "High-risk controls", "Docs before scale"];
-    eu.forEach((lab, i) => {
-      chip(s, 365, 110 + i * 55, 250, 44, lab, COL.orange, { size: 13, fill: "#ffffff" });
-    });
-  }
-
-  // -------------------------------------------------------------
-  // Part 2b: MAESTRO / AIVSS / CSA
-  // -------------------------------------------------------------
-  function drawRiskToolkit(host) {
-    const s = scene(host, 660, 360);
-    const zh = isZh();
-    const items = [
-      { t: "MAESTRO", d: zh ? "智能体威胁建模" : "Agent threat modeling", c: COL.grape },
-      { t: "AIVSS", d: zh ? "漏洞严重度评分" : "Vulnerability scoring", c: COL.blue },
-      { t: zh ? "CSA 红队 + AICM" : "CSA Red Team + AICM", d: zh ? "对抗测试与管控矩阵" : "Adversarial test + controls", c: COL.teal }
+    const rows = [
+      {
+        fn: "Govern",
+        art: zh ? "CSA AI 组织责任白皮书" : "CSA AI Org. Responsibility\nWhite Papers",
+        c: COL.blue
+      },
+      {
+        fn: "Map",
+        art: zh ? "MAESTRO 威胁建模" : "MAESTRO\nThreat Modeling",
+        c: COL.grape
+      },
+      {
+        fn: "Measure",
+        art: zh ? "AIVSS 漏洞评分" : "AIVSS\nVulnerability Scoring",
+        c: COL.orange
+      },
+      {
+        fn: "Manage",
+        art: zh ? "CSA AICM + 红队指南" : "CSA AICM +\nRed Teaming Guide",
+        c: COL.green
+      }
     ];
-    items.forEach((it, i) => {
-      const x = 25 + i * 215;
-      rect(s, x, 50, 200, 260, { fill: "#ffffff", fillStyle: "solid", stroke: it.c, strokeWidth: 2.2 });
-      txt(s, x + 100, 120, it.t, { anchor: "middle", weight: 800, col: it.c, size: 15 });
-      txt(s, x + 100, 200, it.d, { anchor: "middle", weight: 600, col: COL.ink, size: 13 });
+    txt(s, 330, 28, zh ? "NIST AI RMF ← CSA / OWASP 工件映射" : "NIST AI RMF ← CSA / OWASP Artifact Map", {
+      anchor: "middle", weight: 800, col: COL.ink, size: 14
+    });
+    rows.forEach((r, i) => {
+      const y = 50 + i * 75;
+      chip(s, 20, y, 150, 58, r.fn, r.c, { size: 15, weight: 800, fill: "#ffffff" });
+      arrow(s, 180, y + 29, 230, y + 29, { stroke: COL.ink, strokeWidth: 2 });
+      chip(s, 240, y, 400, 58, r.art, r.c, { size: 13, weight: 700, fill: "#ffffff" });
     });
   }
 
@@ -569,7 +568,7 @@
     chip(s, 40, 35, 180, 55, zh ? "Part 1\n四类投资桶" : "Part 1\n4 Investment Buckets", COL.blue, { size: 12.5, fill: "#ffffff" });
     arrow(s, 220, 62, 250, 140, { stroke: COL.blue });
 
-    chip(s, 240, 35, 180, 55, zh ? "Part 2\n风险治理栈" : "Part 2\nRisk Governance", COL.orange, { size: 12.5, fill: "#ffffff" });
+    chip(s, 240, 35, 180, 55, zh ? "Part 2\nNIST RMF 映射" : "Part 2\nNIST RMF Mapping", COL.orange, { size: 12.5, fill: "#ffffff" });
     arrow(s, 330, 90, 330, 130, { stroke: COL.orange });
 
     chip(s, 440, 35, 180, 55, zh ? "Part 3\n七项战术控制" : "Part 3\n7 Tactical Controls", COL.green, { size: 12.5, fill: "#ffffff" });
@@ -595,8 +594,7 @@
   const RENDERERS = {
     "agenda-three-parts": drawAgendaThreeParts,
     "four-buckets": drawFourBuckets,
-    "risk-policy": drawRiskPolicy,
-    "risk-toolkit": drawRiskToolkit,
+    "risk-rmf-mapping": drawRiskRmfMapping,
     "seven-controls": drawSevenControls,
     "autonomy-governance": drawAutonomyGovernance,
     "domain-ibac": drawIBACArchitecture,
@@ -609,17 +607,16 @@
     "summary-roi": drawROISynthesis,
     3: drawAgendaThreeParts,
     4: drawFourBuckets,
-    5: drawRiskPolicy,
-    6: drawRiskToolkit,
-    7: drawSevenControls,
-    8: drawAutonomyGovernance,
-    9: drawIBACArchitecture,
-    10: drawContextMemoryHygiene,
-    11: drawObservabilityTrace,
-    12: drawRuntimeSteering,
-    13: drawBenchmarkMatrix,
-    14: drawMixedModelRouting,
-    15: drawROISynthesis
+    5: drawRiskRmfMapping,
+    6: drawSevenControls,
+    7: drawAutonomyGovernance,
+    8: drawIBACArchitecture,
+    9: drawContextMemoryHygiene,
+    10: drawObservabilityTrace,
+    11: drawRuntimeSteering,
+    12: drawBenchmarkMatrix,
+    13: drawMixedModelRouting,
+    14: drawROISynthesis
   };
 
   window.renderAllDiagrams = function () {
