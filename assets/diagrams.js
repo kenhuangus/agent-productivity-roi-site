@@ -34,6 +34,7 @@
   }
 
   const NS = "http://www.w3.org/2000/svg";
+  const TEXT_SCALE = 1.5;
 
   function scene(host, w, h) {
     host.innerHTML = "";
@@ -99,7 +100,8 @@
     t.setAttribute("y", y);
     t.setAttribute("fill", opts.col || COL.ink);
     t.setAttribute("font-family", opts.family || "'Inter', system-ui, -apple-system, sans-serif");
-    t.setAttribute("font-size", opts.size || 12);
+    const fs = (opts.size || 12) * TEXT_SCALE;
+    t.setAttribute("font-size", fs);
     t.setAttribute("font-weight", opts.weight || 500);
     if (opts.anchor) t.setAttribute("text-anchor", opts.anchor);
 
@@ -110,7 +112,7 @@
         t.setAttribute("dominant-baseline", "central");
       }
     } else {
-      const lineH = (opts.size || 12) * 1.35;
+      const lineH = fs * 1.3;
       const startY = y - ((lines.length - 1) * lineH) / 2;
       lines.forEach((lineStr, lIdx) => {
         const span = document.createElementNS(NS, "tspan");
@@ -154,17 +156,17 @@
     const s = scene(host, 660, 360);
     const zh = isZh();
     const buckets = [
-      { n: "1", t: zh ? "无需智能体" : "No Agentic AI", d: zh ? "系统运行良好\n保持现状" : "Works fine today\nLeave as-is", c: COL.slate },
-      { n: "2", t: zh ? "叠加智能体" : "Leverage Agents", d: zh ? "提升价值获取\n与生产力" : "Better value &\nproductivity", c: COL.blue },
-      { n: "3", t: zh ? "重塑为智能体" : "Re-platform", d: zh ? "遗留阻塞 ROI\n需平台重建" : "Legacy blocks ROI\nRebuild agentic", c: COL.orange },
-      { n: "4", t: zh ? "原生新建" : "AI-Native New", d: zh ? "从零构建\nAgentic Native" : "Greenfield built\nas agent-native", c: COL.green }
+      { n: "1", t: zh ? "无需智能体" : "Leave alone", d: zh ? "运行良好" : "Works fine", c: COL.slate },
+      { n: "2", t: zh ? "叠加智能体" : "Leverage", d: zh ? "价值+生产力" : "Value + productivity", c: COL.blue },
+      { n: "3", t: zh ? "重塑平台" : "Re-platform", d: zh ? "遗留阻塞 ROI" : "Legacy blocks ROI", c: COL.orange },
+      { n: "4", t: zh ? "原生新建" : "Agent-native", d: zh ? "绿地新建" : "Greenfield native", c: COL.green }
     ];
     buckets.forEach((b, i) => {
       const y = 18 + i * 84;
       rect(s, 20, y, 620, 74, { fill: "#ffffff", fillStyle: "solid", stroke: b.c, strokeWidth: 2 });
-      chip(s, 35, y + 14, 52, 46, b.n, b.c, { size: 18, weight: 800, fill: "#ffffff" });
-      txt(s, 110, y + 28, b.t, { weight: 800, col: b.c, size: 15 });
-      txt(s, 110, y + 52, b.d.replace("\n", " · "), { weight: 500, col: COL.ink, size: 12 });
+      chip(s, 35, y + 14, 52, 46, b.n, b.c, { size: 16, weight: 800, fill: "#ffffff" });
+      txt(s, 110, y + 30, b.t, { weight: 800, col: b.c, size: 14 });
+      txt(s, 110, y + 54, b.d, { weight: 500, col: COL.ink, size: 12 });
     });
   }
 
@@ -177,33 +179,33 @@
     const rows = [
       {
         fn: "Govern",
-        art: zh ? "CSA AI 组织责任白皮书" : "CSA AI Org. Responsibility\nWhite Papers",
+        art: zh ? "CSA AI 组织责任白皮书" : "CSA AI Org. Responsibility Papers",
         c: COL.blue
       },
       {
         fn: "Map",
-        art: zh ? "MAESTRO 威胁建模" : "MAESTRO\nThreat Modeling",
+        art: zh ? "MAESTRO" : "MAESTRO",
         c: COL.grape
       },
       {
         fn: "Measure",
-        art: zh ? "AIVSS 漏洞评分" : "AIVSS\nVulnerability Scoring",
+        art: zh ? "AIVSS" : "AIVSS",
         c: COL.orange
       },
       {
         fn: "Manage",
-        art: zh ? "CSA AICM + 红队指南" : "CSA AICM +\nRed Teaming Guide",
+        art: zh ? "CSA AICM + 红队指南" : "CSA AICM + Red Teaming Guide",
         c: COL.green
       }
     ];
-    txt(s, 330, 28, zh ? "NIST AI RMF ← CSA / OWASP 工件映射" : "NIST AI RMF ← CSA / OWASP Artifact Map", {
-      anchor: "middle", weight: 800, col: COL.ink, size: 14
+    txt(s, 330, 28, zh ? "NIST AI RMF ← CSA / AIVSS" : "NIST AI RMF ← CSA / AIVSS", {
+      anchor: "middle", weight: 800, col: COL.ink, size: 13
     });
     rows.forEach((r, i) => {
-      const y = 50 + i * 75;
-      chip(s, 20, y, 150, 58, r.fn, r.c, { size: 15, weight: 800, fill: "#ffffff" });
-      arrow(s, 180, y + 29, 230, y + 29, { stroke: COL.ink, strokeWidth: 2 });
-      chip(s, 240, y, 400, 58, r.art, r.c, { size: 13, weight: 700, fill: "#ffffff" });
+      const y = 48 + i * 76;
+      chip(s, 20, y, 150, 60, r.fn, r.c, { size: 14, weight: 800, fill: "#ffffff" });
+      arrow(s, 180, y + 30, 230, y + 30, { stroke: COL.ink, strokeWidth: 2 });
+      chip(s, 240, y, 400, 60, r.art, r.c, { size: 12, weight: 700, fill: "#ffffff" });
     });
   }
 
