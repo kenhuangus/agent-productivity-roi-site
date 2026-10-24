@@ -280,129 +280,120 @@
   // Slide 5 Diagram: Pillar 2: Domain Ontology & IBAC
   // -------------------------------------------------------------
   function drawIBACArchitecture(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // Natural Language Input (Wider box, no text cut)
-    chip(s, 15, 35, 195, 75, zh ? "模糊自然语言输入\n(\"清理旧缓存并重构权限\")" : "Fuzzy User Prompt\n(\"Prune caches & fix auth\")", COL.red, { size: 12, fill: "#ffffff" });
+    chip(s, 16, 48, 260, 100, zh ? "模糊自然语言输入\n(清理缓存/修权限)" : "Fuzzy User Prompt\n(prune & fix auth)", COL.red, { size: 12, fill: "#ffffff" });
 
-    arrow(s, 215, 72, 240, 72, { stroke: COL.ink, strokeWidth: 2 });
+    arrow(s, 286, 98, 318, 98, { stroke: COL.ink, strokeWidth: 2 });
 
-    // Formal Domain Ontology Engine
-    rect(s, 240, 20, 220, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.grape, strokeWidth: 2 });
-    txt(s, 350, 45, zh ? "领域本体语义图谱引擎" : "Domain Ontology Engine", { anchor: "middle", weight: 700, col: COL.grape, size: 13 });
+    rect(s, 326, 18, 340, 404, { fill: "#ffffff", fillStyle: "solid", stroke: COL.grape, strokeWidth: 2 });
+    txt(s, 496, 48, zh ? "领域本体语义图谱引擎" : "Domain Ontology Engine", { anchor: "middle", weight: 700, col: COL.grape, size: 13 });
 
-    chip(s, 252, 65, 196, 36, zh ? "概念实体 (Entity / Scope)" : "Entities (File / Scope)", COL.grape, { size: 11.5, fill: "#ffffff" });
-    chip(s, 252, 108, 196, 36, zh ? "原子动作 (Action Primitives)" : "Action Primitives (Patch)", COL.blue, { size: 11.5, fill: "#ffffff" });
-    chip(s, 252, 151, 196, 36, zh ? "前后置不变量约束 (Invariants)" : "Invariants (No Network)", COL.orange, { size: 11.5, fill: "#ffffff" });
-    chip(s, 252, 194, 196, 36, zh ? "状态迁移状态机 (State Graph)" : "State Machine Graph", COL.teal, { size: 11.5, fill: "#ffffff" });
-    chip(s, 252, 237, 196, 42, zh ? "消歧与注入清洗\n(Injection Filter)" : "Disambiguation &\nSanitizer", COL.green, { size: 11.5, fill: "#ffffff" });
-    txt(s, 350, 315, zh ? "终结混淆代理漏洞" : "Zero Confused Deputy", { anchor: "middle", size: 11.5, col: COL.grape, weight: 700 });
+    chip(s, 344, 72, 304, 48, zh ? "概念实体 (Entity / Scope)" : "Entities (File / Scope)", COL.grape, { size: 12, fill: "#ffffff" });
+    chip(s, 344, 132, 304, 48, zh ? "原子动作 (Action Primitives)" : "Action Primitives (Patch)", COL.blue, { size: 12, fill: "#ffffff" });
+    chip(s, 344, 192, 304, 48, zh ? "前后置不变量约束" : "Invariants (No Network)", COL.orange, { size: 12, fill: "#ffffff" });
+    chip(s, 344, 252, 304, 48, zh ? "状态迁移状态机" : "State Machine Graph", COL.teal, { size: 12, fill: "#ffffff" });
+    chip(s, 344, 312, 304, 54, zh ? "消歧与注入清洗" : "Disambiguation & Sanitizer", COL.green, { size: 12, fill: "#ffffff" });
+    txt(s, 496, 396, zh ? "终结混淆代理漏洞" : "Zero Confused Deputy", { anchor: "middle", size: 12, col: COL.grape, weight: 700 });
 
-    arrow(s, 465, 72, 490, 72, { stroke: COL.green, strokeWidth: 2 });
+    arrow(s, 676, 98, 708, 98, { stroke: COL.green, strokeWidth: 2 });
 
-    // Formal Intent AST & CapToken
-    rect(s, 490, 20, 155, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.teal, strokeWidth: 2 });
-    txt(s, 567, 45, zh ? "细粒度能力凭据" : "Dynamic CapToken", { anchor: "middle", weight: 700, col: COL.teal, size: 12.5 });
-    txt(s, 502, 75, "Action: Patch", { size: 11.5, weight: 600, family: "'JetBrains Mono'" });
-    txt(s, 502, 102, "Target: auth.py", { size: 11.5, weight: 600, family: "'JetBrains Mono'" });
-    txt(s, 502, 129, "NetAccess: None", { size: 11.5, weight: 600, family: "'JetBrains Mono'" });
-    txt(s, 502, 156, "TTL: 120s", { size: 11.5, weight: 600, family: "'JetBrains Mono'" });
-    txt(s, 502, 183, "Uses: 1 (Burn)", { size: 11.5, weight: 600, family: "'JetBrains Mono'" });
-    txt(s, 502, 210, "Hash: 0x9a8f...", { size: 11.5, weight: 500, family: "'JetBrains Mono'" });
+    rect(s, 716, 18, 228, 404, { fill: "#ffffff", fillStyle: "solid", stroke: COL.teal, strokeWidth: 2 });
+    txt(s, 830, 48, zh ? "细粒度能力凭据" : "Dynamic CapToken", { anchor: "middle", weight: 700, col: COL.teal, size: 13 });
+    txt(s, 736, 88, "Action: Patch", { size: 12, weight: 600, family: "'JetBrains Mono'" });
+    txt(s, 736, 120, "Target: auth.py", { size: 12, weight: 600, family: "'JetBrains Mono'" });
+    txt(s, 736, 152, "NetAccess: None", { size: 12, weight: 600, family: "'JetBrains Mono'" });
+    txt(s, 736, 184, "TTL: 120s", { size: 12, weight: 600, family: "'JetBrains Mono'" });
+    txt(s, 736, 216, "Uses: 1 (Burn)", { size: 12, weight: 600, family: "'JetBrains Mono'" });
+    txt(s, 736, 248, "Hash: 0x9a8f...", { size: 12, weight: 500, family: "'JetBrains Mono'" });
 
-    txt(s, 502, 250, zh ? "✓ 单次使用即销毁" : "✓ Single-use only", { size: 11, col: COL.green, weight: 700 });
-    txt(s, 502, 275, zh ? "✓ 零隐式环境特权" : "✓ No ambient auth", { size: 11, col: COL.green, weight: 700 });
-    txt(s, 502, 300, zh ? "✓ 最小化爆炸半径" : "✓ Min blast radius", { size: 11, col: COL.green, weight: 700 });
+    txt(s, 736, 300, zh ? "✓ 单次使用即销毁" : "✓ Single-use only", { size: 12, col: COL.green, weight: 700 });
+    txt(s, 736, 336, zh ? "✓ 零隐式环境特权" : "✓ No ambient auth", { size: 12, col: COL.green, weight: 700 });
+    txt(s, 736, 372, zh ? "✓ 最小化爆炸半径" : "✓ Min blast radius", { size: 12, col: COL.green, weight: 700 });
   }
 
   // -------------------------------------------------------------
   // Slide 6 Diagram: Pillar 3: Context Hygiene & 3-Tier Memory
   // -------------------------------------------------------------
   function drawContextMemoryHygiene(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // Ingestion (Left Box)
-    chip(s, 15, 35, 185, 70, zh ? "外部不可信信息输入\n(网页 / API / 日志)" : "Untrusted Inputs\n(Web / API / Logs)", COL.slate, { size: 12, fill: "#ffffff" });
+    chip(s, 16, 40, 220, 88, zh ? "外部不可信信息输入\n(网页 / API / 日志)" : "Untrusted Inputs\n(Web / API / Logs)", COL.slate, { size: 12, fill: "#ffffff" });
 
-    arrow(s, 200, 70, 225, 70, { stroke: COL.ink, strokeWidth: 2 });
+    arrow(s, 246, 82, 276, 82, { stroke: COL.ink, strokeWidth: 2 });
 
-    // Tier 1: Ephemeral Turn Memory
-    chip(s, 225, 35, 195, 70, zh ? "Tier 1: 临时工作记忆\n(草稿本 / 任务完即销毁)" : "Tier 1: Ephemeral Memory\n(Zeroized on task end)", COL.blue, { size: 12, fill: "#ffffff" });
+    chip(s, 280, 36, 320, 92, zh ? "Tier 1: 临时工作记忆\n(任务完即销毁)" : "Tier 1: Ephemeral Memory\n(Zeroized on task end)", COL.blue, { size: 12, fill: "#ffffff" });
 
-    arrow(s, 322, 105, 322, 130, { stroke: COL.ink, strokeWidth: 2 });
+    arrow(s, 440, 138, 440, 168, { stroke: COL.ink, strokeWidth: 2 });
 
-    // Tier 2: Quarantined Buffer
-    rect(s, 215, 130, 215, 95, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
-    txt(s, 322, 152, zh ? "Tier 2: 隔离检验缓冲区" : "Tier 2: Quarantined Buffer", { anchor: "middle", weight: 700, col: COL.orange, size: 12.5 });
-    txt(s, 322, 178, zh ? "• 密码学溯源核验 (Provenance)" : "• Provenance Signature Check", { anchor: "middle", size: 11.5, weight: 600 });
-    txt(s, 322, 202, zh ? "• 冲突消除与 TTL (CRDTs)" : "• Conflict Reconciliation / TTL", { anchor: "middle", size: 11.5, weight: 600 });
+    rect(s, 280, 172, 320, 120, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
+    txt(s, 440, 200, zh ? "Tier 2: 隔离检验缓冲区" : "Tier 2: Quarantined Buffer", { anchor: "middle", weight: 700, col: COL.orange, size: 13 });
+    txt(s, 440, 234, zh ? "• 密码学溯源核验" : "• Provenance check", { anchor: "middle", size: 12, weight: 600 });
+    txt(s, 440, 266, zh ? "• 冲突消除与 TTL" : "• Conflict / TTL", { anchor: "middle", size: 12, weight: 600 });
 
-    arrow(s, 322, 225, 322, 250, { stroke: COL.green, strokeWidth: 2 });
+    arrow(s, 440, 302, 440, 328, { stroke: COL.green, strokeWidth: 2 });
 
-    // Tier 3: Verified Long-Term Storage
-    chip(s, 225, 250, 195, 70, zh ? "Tier 3: 已验证可信长期存储\n(只追加 / 签名不可变)" : "Tier 3: Verified Long-Term\n(Immutable / Signed)", COL.green, { size: 12, fill: "#ffffff" });
+    chip(s, 280, 332, 320, 88, zh ? "Tier 3: 已验证长期存储\n(只追加 / 签名)" : "Tier 3: Verified Long-Term\n(Immutable / Signed)", COL.green, { size: 12, fill: "#ffffff" });
 
-    // Hygiene Rules sidebar (Right Card)
-    rect(s, 440, 20, 205, 315, { fill: "#ffffff", fillStyle: "solid", stroke: COL.teal, strokeWidth: 2 });
-    txt(s, 542, 45, zh ? "记忆卫生防护法则" : "Memory Invariants", { anchor: "middle", weight: 700, col: COL.teal, size: 13 });
+    rect(s, 628, 18, 316, 404, { fill: "#ffffff", fillStyle: "solid", stroke: COL.teal, strokeWidth: 2 });
+    txt(s, 786, 48, zh ? "记忆卫生防护法则" : "Memory Invariants", { anchor: "middle", weight: 700, col: COL.teal, size: 14 });
 
-    txt(s, 452, 75, zh ? "1. 密码学来源标签" : "1. Cryptographic Tags", { size: 12, weight: 700, col: COL.teal });
-    txt(s, 452, 95, zh ? "签名者、时间戳与哈希" : "Author, timestamp, hash", { size: 11, col: COL.ink });
+    txt(s, 648, 90, zh ? "1. 密码学来源标签" : "1. Cryptographic Tags", { size: 13, weight: 700, col: COL.teal });
+    txt(s, 648, 118, zh ? "签名者、时间戳与哈希" : "Author, timestamp, hash", { size: 12, col: COL.ink });
 
-    txt(s, 452, 125, zh ? "2. 严格 TTL 动态过期" : "2. Strict TTL Expiry", { size: 12, weight: 700, col: COL.teal });
-    txt(s, 452, 145, zh ? "报价 30 秒，凭证 15 分钟" : "Quotes 30s, tokens 15m", { size: 11, col: COL.ink });
+    txt(s, 648, 158, zh ? "2. 严格 TTL 动态过期" : "2. Strict TTL Expiry", { size: 13, weight: 700, col: COL.teal });
+    txt(s, 648, 186, zh ? "报价 30 秒，凭证 15 分钟" : "Quotes 30s, tokens 15m", { size: 12, col: COL.ink });
 
-    txt(s, 452, 175, zh ? "3. 确定性冲突仲裁" : "3. Deterministic Arb", { size: 12, weight: 700, col: COL.teal });
-    txt(s, 452, 195, zh ? "领域本体优先序判别真伪" : "Ontological precedence", { size: 11, col: COL.ink });
+    txt(s, 648, 226, zh ? "3. 确定性冲突仲裁" : "3. Deterministic Arb", { size: 13, weight: 700, col: COL.teal });
+    txt(s, 648, 254, zh ? "领域本体优先序" : "Ontological precedence", { size: 12, col: COL.ink });
 
-    txt(s, 452, 225, zh ? "4. 零外部直写长期库" : "4. Zero Direct Writes", { size: 12, weight: 700, col: COL.red });
-    txt(s, 452, 245, zh ? "不可信数据绝不进入长期库" : "No untrusted persistence", { size: 11, col: COL.red });
+    txt(s, 648, 294, zh ? "4. 零外部直写长期库" : "4. Zero Direct Writes", { size: 13, weight: 700, col: COL.red });
+    txt(s, 648, 322, zh ? "不可信数据不进长期库" : "No untrusted persistence", { size: 12, col: COL.red });
 
-    txt(s, 452, 280, zh ? "🚀 节省 65% Token 消耗" : "🚀 65% Token Reductions", { size: 12, weight: 700, col: COL.green });
-    txt(s, 452, 302, zh ? "✓ 杜绝上下文注意力稀释" : "✓ Eliminates attention drift", { size: 11, col: COL.blue, weight: 600 });
+    txt(s, 648, 368, zh ? "🚀 节省 65% Token" : "🚀 65% Token Reductions", { size: 13, weight: 700, col: COL.green });
+    txt(s, 648, 398, zh ? "✓ 杜绝注意力稀释" : "✓ No attention drift", { size: 12, col: COL.blue, weight: 600 });
   }
 
   // -------------------------------------------------------------
   // Slide 7 Diagram: Pillar 4: Trajectory Observability & Drift
   // -------------------------------------------------------------
   function drawObservabilityTrace(host) {
-    const s = scene(host, 660, 360);
+    const s = scene(host, 960, 440);
     const zh = isZh();
 
-    // Top: Step nodes in OTel DAG
+    const nodeW = 150;
     const nodes = [
-      { x: 20, y: 35, l: "Thought 1\n(Goal)" },
-      { x: 145, y: 35, l: "Plan Step\n(Spec)" },
-      { x: 270, y: 35, l: "Tool Call\n(git_diff)" },
-      { x: 395, y: 35, l: "Observe\n(Pass)" },
-      { x: 520, y: 35, l: "Tool Call\n(test_run)" },
-      { x: 520, y: 135, l: "Reflect\n(Coverage)" },
-      { x: 395, y: 135, l: "Verify Invariant\n(No Leak)" },
-      { x: 270, y: 135, l: "Commit\n(Verified)" }
+      { x: 20, y: 28, l: "Thought 1\n(Goal)" },
+      { x: 190, y: 28, l: "Plan Step\n(Spec)" },
+      { x: 360, y: 28, l: "Tool Call\n(git_diff)" },
+      { x: 530, y: 28, l: "Observe\n(Pass)" },
+      { x: 700, y: 28, l: "Tool Call\n(test_run)" },
+      { x: 700, y: 130, l: "Reflect\n(Coverage)" },
+      { x: 530, y: 130, l: "Verify\n(No Leak)" },
+      { x: 360, y: 130, l: "Commit\n(Verified)" }
     ];
 
     nodes.forEach(n => {
-      chip(s, n.x, n.y, 115, 46, n.l, COL.blue, { size: 11 });
+      chip(s, n.x, n.y, nodeW, 62, n.l, COL.blue, { size: 12 });
     });
 
-    arrow(s, 135, 58, 145, 58, { stroke: COL.ink });
-    arrow(s, 260, 58, 270, 58, { stroke: COL.ink });
-    arrow(s, 385, 58, 395, 58, { stroke: COL.ink });
-    arrow(s, 510, 58, 520, 58, { stroke: COL.ink });
-    arrow(s, 577, 81, 577, 135, { stroke: COL.ink });
-    arrow(s, 520, 158, 510, 158, { stroke: COL.ink });
-    arrow(s, 395, 158, 385, 158, { stroke: COL.green });
+    arrow(s, 170, 59, 190, 59, { stroke: COL.ink });
+    arrow(s, 340, 59, 360, 59, { stroke: COL.ink });
+    arrow(s, 510, 59, 530, 59, { stroke: COL.ink });
+    arrow(s, 680, 59, 700, 59, { stroke: COL.ink });
+    arrow(s, 775, 90, 775, 130, { stroke: COL.ink });
+    arrow(s, 700, 161, 680, 161, { stroke: COL.ink });
+    arrow(s, 530, 161, 510, 161, { stroke: COL.green });
 
-    // Anomaly Engine Overlay Card (Bottom Solid Card)
-    rect(s, 20, 215, 615, 120, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
-    txt(s, 327, 238, zh ? "OpenTelemetry GenAI 执行轨迹与异常探测引擎" : "OpenTelemetry GenAI Trajectory & Anomaly Engine", {
-      anchor: "middle", weight: 700, col: COL.orange, size: 13
+    rect(s, 20, 230, 920, 190, { fill: "#ffffff", fillStyle: "solid", stroke: COL.orange, strokeWidth: 2 });
+    txt(s, 480, 268, zh ? "OpenTelemetry GenAI 轨迹与异常引擎" : "OTel GenAI Trajectory & Anomaly Engine", {
+      anchor: "middle", weight: 700, col: COL.orange, size: 14
     });
-    txt(s, 35, 266, zh ? "• 语义漂移打分：实时计算当前执行计划与岗位规范 (SJD) 之间的向量余弦距离" : "• Semantic Drift Scoring: Measures cosine distance between active plan and SJD", { size: 11.5 });
-    txt(s, 35, 288, zh ? "• 循环振荡拦截：识别重复调用失败工具超过 3 次的死循环，阻断 Token 抽水" : "• Loop Interception: Flags >3 repeated tool failures, preventing token exhaustion", { size: 11.5 });
-    txt(s, 35, 310, zh ? "• 隐蔽侧移检测：阻止智能体尝试访问未授权文件系统、环境变量私钥" : "• Lateral Movement Detection: Halts unauthorized file/key/env access attempts", { size: 11.5 });
+    txt(s, 48, 310, zh ? "• 语义漂移打分：计划与 SJD 余弦距离" : "• Semantic Drift: cosine distance plan ↔ SJD", { size: 13 });
+    txt(s, 48, 348, zh ? "• 循环振荡拦截：失败工具调用 >3 次即阻断" : "• Loop Intercept: halt after >3 failed tool retries", { size: 13 });
+    txt(s, 48, 386, zh ? "• 隐蔽侧移检测：拦截未授权文件/密钥/环境访问" : "• Lateral Move Detect: block unauthorized file/key/env", { size: 13 });
   }
 
   // -------------------------------------------------------------
