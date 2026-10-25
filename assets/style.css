@@ -358,7 +358,8 @@ a { color: inherit; text-decoration: none; }
   flex: 1 1 auto;
   height: 100%;
   min-height: 0;
-  align-items: stretch;
+  /* Top-align so books card does not stretch and pin logos to the bottom */
+  align-items: start;
 }
 @media (max-width: 860px) {
   #s2 {
@@ -431,9 +432,9 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
-  /* Hug covers + logos; avoid tall empty footer below publishers */
   align-self: start;
   height: auto;
+  width: 100%;
 }
 .author-books-header {
   background: rgba(255, 106, 43, 0.08);
@@ -446,6 +447,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 700;
   font-size: clamp(0.86rem, 1.8vh, 0.98rem);
   color: var(--ink);
+  flex: 0 0 auto;
 }
 .author-books-header a {
   font-family: var(--hand);
@@ -454,13 +456,21 @@ a { color: inherit; text-decoration: none; }
   text-decoration: none;
   font-weight: 700;
 }
+/* Covers + publisher logos share one packed stack (no stretch gap) */
+.books-pubs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.30rem;
+  padding: 0.45rem 0.65rem 0.45rem 0.65rem;
+  background: #fafaf8;
+  flex: 0 0 auto;
+}
 .books-gallery-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.45rem;
-  padding: 0.55rem 0.65rem 0.40rem 0.65rem;
-  background: #fafaf8;
-  /* Keep covers packed so publisher logos sit immediately below */
+  padding: 0;
+  background: transparent;
   flex: 0 0 auto;
 }
 .book-item-card {
@@ -510,41 +520,40 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
-/* ---------- Slide 2: Publisher Logos Section ---------- */
+/* ---------- Slide 2: Publisher Logos (packed under covers) ---------- */
 .publishers-section {
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-top: 1.5px solid var(--line);
-  padding: 0.35rem 0.65rem 0.45rem 0.65rem;
-  gap: 0.28rem;
-  /* Sit directly under book covers — do not push to card bottom */
-  margin-top: 0;
-  flex-shrink: 0;
+  background: transparent;
+  border-top: 1px solid var(--line);
+  padding: 0.30rem 0 0 0;
+  gap: 0.22rem;
+  margin-top: 0 !important;
+  flex: 0 0 auto;
 }
 .publishers-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 0.65rem;
-  padding: 0 0.10rem;
+  padding: 0 0.05rem;
   flex-wrap: wrap;
 }
 .publishers-title {
   font-family: 'Space Grotesk', Inter, sans-serif;
   font-weight: 700;
-  font-size: clamp(0.72rem, 1.4vh, 0.84rem);
+  font-size: clamp(0.70rem, 1.35vh, 0.82rem);
   color: var(--ink);
   display: flex;
   align-items: center;
   gap: 0.35rem;
   letter-spacing: 0.01em;
-  line-height: 1.25;
+  line-height: 1.2;
   flex: 1 1 auto;
   min-width: 0;
 }
 .publishers-sub {
-  font-size: clamp(0.58rem, 1.1vh, 0.68rem);
+  font-size: clamp(0.55rem, 1.05vh, 0.66rem);
   font-weight: 600;
   color: var(--muted);
   flex: 0 1 auto;
@@ -553,21 +562,21 @@ a { color: inherit; text-decoration: none; }
 .publishers-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 0.35rem;
+  gap: 0.30rem;
 }
 .publisher-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fafaf8;
+  background: #ffffff;
   border: 1px solid var(--line);
   border-radius: 6px;
-  padding: 0.30rem 0.25rem 0.28rem 0.25rem;
+  padding: 0.22rem 0.18rem 0.20rem 0.18rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.03);
   text-decoration: none;
   transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s, background-color 0.18s;
-  min-height: 56px;
+  min-height: 48px;
 }
 .publisher-card:hover {
   transform: translateY(-2px);
@@ -577,23 +586,23 @@ a { color: inherit; text-decoration: none; }
 }
 .publisher-logo-wrap {
   width: 100%;
-  height: clamp(30px, 4.4vh, 40px);
+  height: clamp(26px, 3.8vh, 34px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.05rem 0.10rem;
+  padding: 0.02rem 0.08rem;
 }
 .publisher-logo-img {
   max-width: 95%;
-  max-height: clamp(28px, 4.0vh, 38px);
+  max-height: clamp(24px, 3.5vh, 32px);
   object-fit: contain;
   display: block;
 }
 .publisher-tag {
-  font-size: clamp(0.50rem, 1.1vh, 0.60rem);
+  font-size: clamp(0.46rem, 1.0vh, 0.55rem);
   font-weight: 800;
   color: var(--ink-2);
-  margin-top: 0.22rem;
+  margin-top: 0.12rem;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
